@@ -1,0 +1,49 @@
+.newnav{
+  /* width: 100%; */
+  /* text-align: center; */
+  /* margin-left: 5%; */
+  /* margin-right: 5%; */
+  /* border: 1px solid blue; */
+}
+
+.newnav ul{
+  /* border: 1px solid blue; */
+  margin-left: -5%;
+}
+
+.newnav li{
+  /* display: inline; */
+  float: left;
+  list-style-type: none;
+  width: 33%;
+  margin: 0.1%;
+  /* border: 1px solid red; */
+  text-align: center;
+  box-shadow: 0.5px 0.5px 1px grey;
+}
+
+.newnav a{
+  display: block;
+  text-align: center;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+}
+
+.newnav a:hover{
+  color: #DCCFEC;
+  background-color: grey;
+}
+
+.newnav a.active{
+  color: #DCCFEC;
+  background-color: black;
+}
+.project_present{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.right .project_present h3{
+  text-align: center;
+  margin-top: 5%;
+}

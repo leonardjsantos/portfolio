@@ -82,6 +82,7 @@ h2{
 
 .right .presentation a{
   display: block;
+  text-decoration: none;
 }
 
 .right .presentation:hover{

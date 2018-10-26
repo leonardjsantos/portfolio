@@ -83,6 +83,7 @@ h2{
 .right .presentation a{
   display: block;
   text-decoration: none;
+  color: black;
 }
 
 .right .presentation:hover{
@@ -114,22 +115,25 @@ h2{
 }
 
 #dog_resize{
-  width:53%;
+  width:50%;
   /* height:55%; */
 }
 
+#musicvid_resize{
+  width: 90%;
+}
+
 #diver_resize{
-  width:63%;
+  width:60%;
   /* height:65%; */
 }
 
 #wand_resize{
-  width:47%;
-  height:47%;
+  width:40%;
 }
 
 #rtt_resize{
-  width: 50%;
+  width: 40%;
 }
 /* .presentation_image .helper{
     display: inline-block;

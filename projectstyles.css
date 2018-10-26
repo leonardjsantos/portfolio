@@ -42,8 +42,54 @@
 .project_present{
   margin-left: 5%;
   margin-right: 5%;
+  text-align: center;
 }
 .right .project_present h3{
   text-align: center;
   margin-top: 5%;
+}
+
+#bansheepic{
+  margin-top: 5%;
+  width: 60%;
+}
+
+.banshee_designs{
+  float: left;
+  width: 50%;
+  /* border: 1px solid black; */
+}
+
+.banshee_designs img{
+  width: 30%;
+}
+
+#original_banshee{
+  width: 26%;
+}
+
+#project2pic{
+  margin-top: 5%;
+  width: 60%;
+}
+
+
+
+#project2_button a{
+  display: block;
+  background-color: white;
+  text-decoration: none;
+  color: black;
+  border: 2px solid black;
+  box-shadow: 1px 1px 5px grey;
+}
+
+#project2_button a:hover{
+  color: #DCCFEC;
+  background-color: grey;
+}
+
+#musicvid_pic{
+  margin-top: 5%;
+  width: 60%;
 }

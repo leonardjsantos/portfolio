@@ -1,25 +1,41 @@
+.top_bar{
+  width: 100%;
+  /* border: 1px solid red; */
+  height: 100px;
+}
 .newnav{
-  /* width: 100%; */
-  /* text-align: center; */
-  /* margin-left: 5%; */
-  /* margin-right: 5%; */
+  float: left;
+  width: 30%;
   /* border: 1px solid blue; */
 }
 
 .newnav ul{
   /* border: 1px solid blue; */
-  margin-left: -5%;
+  /* margin-left: -5%; */
+}
+
+.top_barPic{
+  text-align: center;
+  width: 69%;
+  /* border: 1px solid yellow; */
+  height: 100%;
+  float: left;
+}
+
+.top_barPic img{
+  text-align: center;
+  width: 100%;
 }
 
 .newnav li{
-  /* display: inline; */
   float: left;
   list-style-type: none;
-  width: 33%;
+  width: 100%;
   margin: 0.1%;
-  /* border: 1px solid red; */
+  /* border: 1px solid #B298DC; */
   text-align: center;
-  box-shadow: 0.5px 0.5px 1px grey;
+  height: 30px;
+  font-size: 20px;
 }
 
 .newnav a{
@@ -28,6 +44,8 @@
   background-color: white;
   text-decoration: none;
   color: black;
+  height: 30px;
+
 }
 
 .newnav a:hover{
@@ -38,6 +56,13 @@
 .newnav a.active{
   color: #DCCFEC;
   background-color: black;
+}
+
+.bottom_bar{
+  width: 100%;
+  float: left;
+  color: white;
+  text-align: center;
 }
 .project_present{
   margin-left: 5%;
@@ -50,18 +75,20 @@
 }
 
 #bansheepic{
-  margin-top: 5%;
-  width: 60%;
+  width: 78%;
+  /* float: left; */
 }
 
 .banshee_designs{
   float: left;
   width: 50%;
+  /* background: white; */
   /* border: 1px solid black; */
 }
 
 .banshee_designs img{
   width: 30%;
+  background: white;
 }
 
 #original_banshee{

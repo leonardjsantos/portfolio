@@ -1,0 +1,50 @@
+.body{
+}
+
+.description{
+  color: white;
+  border: 1px solid #B298DC;
+  text-align: center;
+  margin: 2%;
+  /* color: #B298DC; */
+
+}
+
+.about_section{
+  color: white;
+  border: 1px solid #B298DC;
+  float: left;
+  margin: 2%;
+  width: 29%;
+  text-align: center;
+}
+
+.about_section h3{
+  /* color: #B298DC; */
+  color: white;
+
+}
+
+.about_section h4{
+  /* background-color: red;
+  border: 1px solid blue; */
+  margin-bottom: -20px;
+  /* color: #B298DC; */
+  color: white;
+
+}
+
+.about_section h5{
+  /* background-color: red;
+  border: 1px solid blue; */
+  /* color: #B298DC; */
+  color: white;
+
+
+}
+
+.about_section p{
+  font-size: 12px;
+  /* color: #B298DC; */
+  color: white;
+}

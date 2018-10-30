@@ -43,6 +43,10 @@
 
 }
 
+.about_section a{
+  text-decoration: none;
+}
+
 .about_section p{
   font-size: 12px;
   /* color: #B298DC; */

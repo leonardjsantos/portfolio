@@ -16,14 +16,14 @@ var music;
 var particles = [];
 
 function preload(){
-  song1 = loadSound('songs/track1.wav');
-  song2 = loadSound('songs/track2.wav');
-  song3 = loadSound('songs/track3.wav');
-  song4 = loadSound('songs/track4.wav');
-  song5 = loadSound('songs/track5.wav');
-  song6 = loadSound('songs/track6.wav');
-  song7 = loadSound('songs/track7.wav');
-  song8 = loadSound('songs/track8.wav');
+  song1 = loadSound('songs/track1.mp3');
+  song2 = loadSound('songs/track2.mp3');
+  song3 = loadSound('songs/track3.mp3');
+  song4 = loadSound('songs/track4.mp3');
+  song5 = loadSound('songs/track5.mp3');
+  song6 = loadSound('songs/track6.mp3');
+  song7 = loadSound('songs/track7.mp3');
+  song8 = loadSound('songs/track8.mp3');
 
   music = "";
   oldmusic = music;
@@ -34,7 +34,9 @@ function preload(){
 }
 
 function setup() {
-   createCanvas(400,200);
+   var canvas= createCanvas(400,200);
+
+   canvas.parent("#div1");
    noFill();
    // song.play();
    fft = new p5.FFT();

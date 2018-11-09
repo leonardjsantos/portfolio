@@ -5,13 +5,16 @@
 
     </style>
     <title>Leonard Santos</title>
+    <script src="../p5/p5.min.js"></script>
+    <script src="../p5/addons/p5.dom.min.js"></script>
+    <script src="../p5/addons/p5.sound.min.js"></script>
+    <script src="sketch.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <link rel="stylesheet" href="../styles.css">
+    <meta name="msapplication-TileColor" content="#da532c">    <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../projectstyles.css">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch" rel="stylesheet">
   </head>
@@ -33,37 +36,45 @@
           <li><a href="http://leonardsantos.com/project3/">III: Music Video</a></li>
           <li><a href="http://leonardsantos.com/project4/">IV: Escape From Apocalypse</a></li>
           <li><a href="http://leonardsantos.com/project5/">V: Rose-Tinted Theatre</a></li>
-          <li><a class="active" href="http://leonardsantos.com/project6/">VI: Dog Paddle</a></li>
-          <li><a href="http://leonardsantos.com/project7/">VII: Diver Mini-Game</a></li>
-          <li><a href="http://leonardsantos.com/project8/">VIII: Wave-A-Wand</a></li>
+          <li><a class="active" href="http://leonardsantos.com/project6/">VI: Album Visualization</a></li>
+          <li><a href="http://leonardsantos.com/project7/">VII: Dog Paddle</a></li>
+          <li><a href="http://leonardsantos.com/project8/">VIII: Diver Mini-Game</a></li>
+          <li><a href="http://leonardsantos.com/project9/">IX: Wave-A-Wand</a></li>
         </ul>
       </div>
       <div class="top_barPic">
-        <img id="diver_header" src="../images/project7_dog.png">
+        <img id="wand_header" src="../images/project6_album.jpg">
       </div>
     </div>
 
     <div class="bottom_bar">
-      <video id="video" width="640" height="480" controls>
-        <source src="dog_paddle.mov" type="video/mp4">
-        <!-- <source src="movie.ogg" type="video/ogg"> -->
-        Your browser does not support the video tag.
-      </video>
+
 
       <div class="project_present">
+        <select name="myMenu" id="myMenu" onchange="updateMenu(this);">
+          <option value="track1">Boy Problems</option>
+          <option value="track2">Good Things Come to Those Who Wait</option>
+          <option value="track3">Stronger</option>
+          <option value="track4">Sandcastles</option>
+          <option value="track5">Runaway Baby</option>
+          <option value="track6">Perfect Places</option>
+          <option value="track7">Telephone/Hotline Bling</option>
+          <option value="track8">Halloween Medley (Thriller/Haunted/Scream)</option>
+        </select>
+        <div id="div1">
+          <p>Press enter to start and stop. Clicking the screen will automatically stop the song.</p>
+        </div>
         <h3>Origin & Description</h3>
-        <p>Dog Paddle is a game where the player must guide the paddle by running in a
-          certain direction in real life by using the two game ubttons in order to prevent the dog
-          from falling out of frame and help the dog catch the tennis ball. Every single time that the
-          dog bounces, it starts moving a little bit faster and therefore the difficulty of the game
-          automatically increases through.</p>
+        <p>This project is a music visualization of the frequencies found within the tracks in the a cappella album, "Everything's
+          Fine". The album was created by my a cappella group, the Vocaholics, where I've been the Music Director and Vice President
+          for the past three years.</p>
         <h3>Process</h3>
-        <p>I created this game by using JavaScript and a MakeyMakey Box in order to give an immersive
-          feel to a classic ball guiding game. I created my physical interface by creating a circuit
-          with household materials: two kitchen bowls and aluminum foil.</p>
+        <p>As the Music Director and Vice President of my a cappella group, the Vocaholics, I was a key component in creating our
+        third official studio album in 2018. I wrote eight of the ten of the arrangements that are featured in the album, and I
+        helped organize the music direction, fundraising, and production of this piece. </p>
 
         <h3>Skills/Softwares/Languages</h3>
-        <p>JavaScript, Physical Making</p>
+        <p>A Cappella Arranging, Sibelius (music writing software), JavaScript, p5, HTML, Music Directing</p>
       </div>
     </div>
   </body>

@@ -1,0 +1,54 @@
+body{
+  background-color: #190033;
+}
+
+header{
+  color: white;
+  text-align: center;
+  border: 1px solid red;
+}
+
+.index_title{
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+.index_layout{
+  /* border: 1px solid red; */
+  height: 200px;
+}
+
+.index_option{
+  color: white;
+  float: left;
+  width: 30%;
+  margin: 1.5%;
+  height: 100%;
+  text-align: center;
+  border: 1px solid lightblue;
+  font-size: 70px;
+}
+
+.index_option:hover{
+  background-color: white;
+  color:#190033;
+}
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  color: white;
+  font-size: 25px;
+}
+
+th, td{
+  padding: 10px;
+}
+
+table{
+  margin-top: 10px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}

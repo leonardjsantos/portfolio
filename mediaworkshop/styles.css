@@ -52,3 +52,39 @@ table{
   margin-left: 10%;
   margin-right: 10%;
 }
+
+nav{
+  color: white;
+}
+
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav li{
+  margin-top: 10px;
+  float: left;
+  text-align: center;
+  width: 16.4%;
+  color: white;
+  border: 1px solid white;
+}
+
+nav li a{
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+nav li:hover{
+  background-color: grey;
+  color: white;
+}
+
+.active{
+  background-color: white;
+  color: #190033;
+}

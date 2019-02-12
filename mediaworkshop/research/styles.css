@@ -6,3 +6,18 @@
   margin-right: auto;
   /* width: 50%; */
 }
+
+.section_writeup{
+  color: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 25px;
+}
+
+#research_list{
+  color: white;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 22px;
+  margin-bottom: 20px;
+}

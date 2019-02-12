@@ -88,3 +88,7 @@ nav li:hover{
   background-color: white;
   color: #190033;
 }
+
+.home_button{
+  text-decoration: none;
+}

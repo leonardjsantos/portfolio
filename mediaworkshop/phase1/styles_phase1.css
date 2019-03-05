@@ -36,6 +36,10 @@ a{
   border: 1px solid white;
 }
 
+#callenlorde_logo{
+  width: 100%;
+}
+
 .callenlorde_linksection{
   margin-bottom: 170px;
 }

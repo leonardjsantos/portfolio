@@ -160,8 +160,9 @@ h3{
 }
 .presentation_image img{
   height: 100%;
-  width: 95%;
+  width: 80%;
   text-align: center;
+  overflow: hidden;
   /* margin-top: 50px;
   margin-bottom: 50px; */
 
@@ -175,32 +176,29 @@ h3{
 #resize_image{
   margin-left: -15%;
   width:55%;
+  overflow: hidden;
+
   /* height: 45%; */
 }
 
 #dog_resize{
-  width:60%;
+  width:50%;
   /* height:55%; */
 }
 
 #musicvid_resize{
-  width: 90%;
+  width: 80%;
 }
 
 #diver_resize{
-  width:70%;
+  width:60%;
   /* height:65%; */
 }
 
 #wand_resize{
-  width:50%;
+  width:40%;
 }
 
 #rtt_resize{
-  width: 60%;
+  width: 50%;
 }
-/* .presentation_image .helper{
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-} */

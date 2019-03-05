@@ -10,4 +10,47 @@
 
 .indent{
   text-indent: 20px;
+  font-size: 25px;
+}
+.indent_plus{
+  text-indent: 40px;
+  font-size: 20px;
+}
+
+.phase1_results{
+  color: white;
+}
+
+.phase1_resulttitle{
+  color: white;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+.progress_title{
+  text-align: center;
+  font-size: 40px;
+  border: 1px solid white;
+}
+
+.callenlorde_linksection{
+  margin-bottom: 170px;
+}
+
+.callenlorde_link{
+  border: 1px solid white;
+  text-align: center;
+  width: 32.5%;
+  float: left;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 5px;
+}
+
+.callenlorde_link:hover{
+  background-color: white;
+  color: #190033;
 }

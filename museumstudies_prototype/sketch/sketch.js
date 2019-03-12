@@ -50,7 +50,7 @@ function setup() {
 				scaleY: 1,
 				scaleZ:1,
 			});
-			// world.add(seaweed);
+			world.add(seaweed);
 		}
 
 		coral1 = new OBJ({

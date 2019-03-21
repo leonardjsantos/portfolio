@@ -101,23 +101,67 @@ h2{
 }
 
 .extra_block{
-  border: 2px solid white;
-  margin: 2%;
-  float: left;
-  width: 40%;
-  height: 400px;
-  vertical-align: middle;
+  /* border: 1px solid white; */
   overflow: scroll;
-  padding: 2%;
+  margin-bottom: 2%;
 }
 
-.extra_text{
+.extra_text_section{
   /* border: 1px solid red; */
+  margin-left: 7%;
+  margin-right: 7%;
+
 }
 
 .extra_title{
-  text-align: center;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.extra_subtitle{
+  margin-top: 5px;
 }
 .about_block_one_extra{
   overflow: hidden;
+}
+
+#vocs_pics{
+  /* border: 1px solid purple; */
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.gallerypic{
+  width: 29%;
+  margin-left: 2%;
+  margin-right: 2%;
+
+}
+
+#caption_album{
+  /* border: 1px solid blue; */
+  width: 60%;
+  float: left;
+  margin-right: 10%;
+}
+
+#album_pic_section{
+  float: left;
+  /* border: 1px solid red; */
+}
+
+#album_pic{
+  width: 17%;
+  text-align: center;
+}
+
+.extra_nyudiv{
+  border: 1px solid red;
+  overflow: hidden;
+}
+
+.nyudiv_three{
+  border: 1px solid blue;
+  width: 33%;
+  float: left;
 }

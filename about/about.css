@@ -154,14 +154,3 @@ h2{
   width: 17%;
   text-align: center;
 }
-
-.extra_nyudiv{
-  border: 1px solid red;
-  overflow: hidden;
-}
-
-.nyudiv_three{
-  border: 1px solid blue;
-  width: 33%;
-  float: left;
-}

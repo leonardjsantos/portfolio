@@ -142,6 +142,8 @@ h3{
   border: 1px solid #B298DC;
   color: #B298DC;
   vertical-align: middle;
+  overflow: hidden;
+  padding: 2px;
 }
 
 .main .presentation:hover{
@@ -159,6 +161,7 @@ h3{
   white-space: nowrap;
   text-align: center;
   vertical-align: middle;
+  overflow: hidden;
 }
 
 

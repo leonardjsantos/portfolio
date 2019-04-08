@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mental Health in the Modern Age</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .mySlides {display: none}
+    img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: black;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+  text-shadow: 1px 1px;
+
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+    </style>
+  </head>
+  <body>
+    <div class="header_page">
+      <ul class="nav_page">
+        <a href="http://localhost:8888/mediaWorkshop_redesignMar28/"><li>home</li></a>
+        <a href="http://localhost:8888/mediaWorkshop_redesignMar28/numbers/"><li>numbers</li></a>
+        <a href="http://localhost:8888/mediaWorkshop_redesignMar28/methods/"><li>methods</li></a>
+        <a href="http://localhost:8888/mediaWorkshop_redesignMar28/research/"><li>research</li></a>
+        <a href="http://localhost:8888/mediaWorkshop_redesignMar28/future/"><li>future</li></a>
+      </ul>
+    </div>
+
+    <h1 class="page_title">research</h1>
+    <p class="page_description">the intersection of digital tech and lgbtq+ wellness</p>
+
+    <div class="main_section">
+      <div class="research_section">
+        <p class="research_title">Social Media Platforms</p>
+        <div class="research_text">
+          <ul>
+            <li>As of 2018, there were 2.62 billion people with a social media account</li>
+            <li>Facebook, Instagram, Twitter, and Tumblr have all automated suicide prevention warnings on their sites</li>
+            <li>Mulitple studies have linked social media with mental illness</li>
+          </ul>
+        </div>
+        <p class="research_text">
+          People are more connected to social media than ever, and there have been multiple attempts to try to use that power to influence queer
+          mental health. This includes most social media platforms, the Trevor Project, and the #ItGetsBetter campaign. Additionally, most major organizations
+          have created social media profiles on most platforms in order to have some form of presence. However, is this actually helpful to any demographic?
+        </p>
+      </div>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 4</div>
+          <img src="../images/support_facebook2.png" style="width:100%">
+          <div class="text">Facebook's automated warning</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 4</div>
+          <img src="../images/support_insta2.png" style="width:100%">
+          <div class="text">Instagram's automated warning</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 4</div>
+          <img src="../images/support_tumblr2.png" style="width:100%">
+          <div class="text">Tumblr's automated warning</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">4 / 4</div>
+          <img src="../images/support_twitter2.png" style="width:100%; text-align: center">
+          <div class="text">Twitter's automated warning</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+
+        </div>
+      <div class="research_section">
+        <p class="research_title">Callen-Lorde</p>
+        <div class="research_imagesDiv">
+          <img id="callen_image" src="../images/callen.jpg">
+          <img id="callen_image" src="../images/callen_map.png">
+          <img id="callen_image" src="../images/callen_50years.png">
+        </div>
+        <div class="research_text">
+          <p><b>Background Information</b></p>
+          <ul>
+            <li>The Callen-Lorde Community Health Center seeks to provide healthcare to the LGBTQ+ community regardless of ability to pay</li>
+            <li>They focus their services and outreach to those with the least amount of access to resources, such as POC, low-income individuals, youth, and those living with HIV</li>
+            <li>There is a special department dedicated to queer youth services called Health Outreach to Teens (HOTT)</li>
+          </ul>
+        </div>
+        <p class="research_text">
+          Callen-Lorde is one of New York City's longest-running queer healthcare organizations, and they're one of the groups that tries to
+          actively provide mental health resources specifically to youths. However, they don't use social media to provide those resources
+          to youths; it doesn't even seem like their social media accounts are tailored for the patients that they're trying to provide
+          outreach to. They use social media primarily to create a public image of itself and promote events they're hosting, while they
+          talk to patients in-person as much as possible.
+        </p>
+        <div class="research_imagesDiv">
+          <img id="callen_image" src="../images/callen_facebook.png">
+          <img id="callen_image" src="../images/callen_insta.png">
+          <img id="callen_image" src="../images/callen_twitter.png">
+
+        </div>
+      </div>
+      <div class="research_section">
+        <p class="research_title">The DC Center</p>
+        <div class="research_imagesDiv">
+          <img id="callen_image" src="../images/dccenter.png">
+          <img id="callen_image" src="../images/dccenter_map.png">
+        </div>
+        <div class="research_text">
+          <p>Background Information</p>
+          <ul>
+            <li>The DC Center is a non-profit organization that aims to provide a hub in DC where the LGBTQ+ community feels accepted and included</li>
+            <li>They focus their energy on small groups of people in the DC area, such as those facing homelessness, people who have been victims of violence, and young people in the DC metro area</li>
+          </ul>
+        </div>
+        <div class="research_imagesDiv">
+          <img id="dccenter_image" src="../images/dccenter_social.png">
+        </div>
+        <p class="research_text">
+          In contrast to Callen-Lorde, the DC Center is a much smaller organization that is run by six employees. It's able to exist due to the multiple partnerships it
+          has with other LGBTQ+ organizations in the DC metropolitan area, such as Whitman Walker. They use social media as a way to talk directly to people who come
+          to their center, tagging them in posts and directly telling them about upcoming events. However, this is also all done as a way to get people to come
+          to the center, as they also do not provide any long-distance resources for mental health.
+        </p>
+      </div>
+      <div class="research_section">
+        <p class="research_title">The Trevor Project</p>
+        <div class="research_imagesDiv">
+          <img class="trevor_image" src="../images/trevorproject.jpg">
+          <img class="trevor_image" src="../images/trevorproject2.jpeg">
+
+        </div>
+        <div class="research_text">
+          <p>Background Information</p>
+          <ul>
+            <li>The Trevor Project provides nationwide service using various forms of social media, digital media, and call centers</li>
+            <li>Trevor Project mental health resources are exclusively based off of digital technology and social media.</li>
+            <li>Their three crisis intervention resources are Trevor Lifeline, a 24/7 suicide prevention hotline, TrevorChat, an instant messaging service that connects youth with counselors, and TrevorText, a free service where LGBTQ+ youths can text a counselor for support</li>
+            <li>Southern states use the largest percentage of Trevor Project resources at 35%</li>
+          </ul>
+        </div>
+        <p class="research_text">
+          The Trevor Project is an organization that uses digital technology and social media to provide services to LGBTQ+ youth. Looking at all of their
+          social media accounts, the Trevor Project makes posts that explicitly market its services or act as motivational images for LGBTQ+ youth. It's significant
+          that the area of the country that uses the most amount of the Trevor Project's resources are in the South, where LGBTQ+ youth suicide is still the highest
+          even though they have access to all of these digital services.
+        </p>
+
+        <div class="research_imagesDiv">
+          <img class="trevor_image" src="../images/trevor_social.png">
+          <img class="trevor_image" src="../images/trevorproject_stats.png">
+
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+      }
+    </script>
+  </body>
+</html>

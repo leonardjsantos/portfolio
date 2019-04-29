@@ -277,6 +277,10 @@ header h2{
   margin-right: 2.5%;
 }
 
+.future_list{
+  line-height: 200%;
+}
+
 .main_section p{
   line-height: 200%;
 }

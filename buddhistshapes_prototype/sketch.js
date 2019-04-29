@@ -141,7 +141,7 @@ function setup(){
 }
 
 function draw() {
-  console.log(menuScreenOn + " - " + levelSelectOn + " - " + playLevelOn);
+  console.log(chooseButtonHoverOn + " - " + menuScreenOn + " - " + levelSelectOn + " - " + playLevelOn);
   if(menuScreenOn == true){
     menuScreen();
   }
@@ -176,7 +176,7 @@ function menuScreen(){
 
   else{
     image(chooseButton, 600, 500);
-
+    chooseButtonHoverOn = false;
   }
 
 }
@@ -325,29 +325,37 @@ function mousePressed() {
   if(menuScreenOn == true && chooseButtonHoverOn == true){
     levelSelectOn = true;
     menuScreenOn = false;
+    console.log("transitioning");
   }
 
-  if(questionButtonHoverOn == true){
+  else if(questionButtonHoverOn == true){
     infoBoxOn = true;
+    console.log("a");
   }
 
-  if(infoBoxOn == true && infoBoxCounter >= 2){
+  else if(infoBoxOn == true && infoBoxCounter >= 2){
     infoBoxOn = false;
     infoBoxCounter = 0;
-
+    console.log("b");
   }
 
-  if(gameButtonHoverOn == true){
+  else if(gameButtonHoverOn == true){
+    gameButtonHoverOn = false;
     levelSelectOn = false;
     playLevelOn = true;
+    console.log("c");
   }
 
-  if(menuButtonHoverOn == true || returnButtonHoverOn == true){
+  else if(menuButtonHoverOn == true || returnButtonHoverOn == true){
+    menuButtonHoverOn == false;
+    returnButtonHoverOn == false;
     playLevelOn = false;
     menuScreenOn = true;
+    console.log("d");
   }
 
-  if(restartButtonHoverOn == true){
+  else if(restartButtonHoverOn == true){
+    console.log("e");
     playLevelWin = false;
     counterWins = 0;
     for(var i = 0; i < puzzlePieces.length; i++){
@@ -358,7 +366,8 @@ function mousePressed() {
 
   }
 
-  if(playagainButtonHoverOn == true){
+  else if(playagainButtonHoverOn == true){
+    console.log("f");
     for(var i = 0; i < assetFilenames.length; i++) {
       assetImages.push(loadImage("assets/images_new/" + assetFilenames[i]));
       assetImagesInfo.push(loadImage("assets/images_new/" + assetFilenamesInfo[i]));
@@ -373,7 +382,8 @@ function mousePressed() {
   }
   // figure out if we need to move a puzzle piece
 
-  if(playLevelOn == true){
+  else if(playLevelOn == true){
+    console.log("g");
     for (var i = 0; i < puzzlePieces.length; i++) {
       if(puzzlePieces[i].infoOn == true){
         puzzlePieces[i].infoOn = false;

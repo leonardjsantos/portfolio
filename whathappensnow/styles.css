@@ -222,13 +222,37 @@ header h2{
 }
 
 .research_imagesDiv{
-  /* border: 1px solid blue; */
   text-align: center;
+  overflow: hidden;
+}
+
+.research_imgCaption{
+  font-size: 13px;
+}
+
+.research_img_cap_pair{
+  width: 33%;
+  float: left;
+}
+
+.research_img_cap_pair2{
+  width: 50%;
+  overflow: hidden;
+  float: left;
+}
+
+.callen_2sec{
+  width: 90%;
+  margin-bottom: 2%;
+}
+
+.research_list li{
+  line-height: 200%;
 }
 
 
 #callen_image{
-  width: 25%;
+  width: 90%;
   margin-left: 3%;
   margin-right: 3%;
 }

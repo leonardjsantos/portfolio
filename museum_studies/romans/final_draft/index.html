@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+  <head>
+    <title>iFrame Multiple Applications</title>
+    <style>
+      body {
+        margin: 0px;
+      }
+
+      #application_p5 {
+        border: 0px;
+        position: absolute;
+        width: 1000px;
+        height: 562px;
+      }
+
+      #application_threejs {
+        border: 0px;
+        width: 800px;
+        height: 600px;
+        position: absolute;
+        display: none;
+      }
+
+      #application_ar {
+	      width: 100%;
+        display: none;
+        height: 100%;
+        display: none;
+      }
+
+      #portrait_warning {
+	      text-align: center;
+		    font-size: 400%;
+		    padding-top: 300px;
+      }
+
+      video {
+        display: none;
+      }
+      canvas {
+        display: none;
+      }
+
+      #back_to_menu {
+        position: fixed;
+        z-index: 102;
+        top: 0px;
+        left: 0px;
+      }
+
+    </style>
+
+	<!-- A-Frame VR Library -->
+	<script src="libraries/aframe.min.js"></script>
+
+	<!-- ARToolKit for A-Frame VR Library -->
+	<script src='libraries/aframe-ar.js'></script>
+
+	<!-- P5 libraries -->
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.min.js"></script>
+
+	<!-- Craig's AFrameP5 AR library -->
+	<script src="libraries/aframep5_ar.js"></script>
+
+    <!-- jQuery -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.documentsize.js"></script>
+
+  </head>
+  <body>
+
+	<script>
+
+	  // application communication & callback logic
+
+      // this function will run every time a message comes in from the ar application
+      // message: a string
+      // ref: (optional) a reference to a function
+      var callbackAR;
+      function messageFromAR(message, ref) {
+        console.log("a message was received from the AR container: " + message);
+        if (ref && !callbackAR) {
+          callbackAR = ref;
+        }
+
+        if (message === 'ARClick') {
+	        console.log(  $("#application_ar")  );
+          // cycle to the the p5 container
+          $("#application_ar").hide();
+          $("video").hide();
+          $("canvas").hide();
+          $("#application_p5").hide();
+          $("#application_threejs").show();
+        }
+      }
+
+
+
+      // this function will run every time a message comes in from the ThreeJS application
+      // message: a string
+      // ref: (optional) a reference to a function
+      var callbackThreeJS;
+      function messageFromThreeJS(message, ref) {
+        console.log("a message was received from the ThreeJS container: " + message);
+        if (ref && !callbackThreeJS) {
+          callBackThreeJS = ref;
+        }
+
+        if (message === 'ThreeJSClick') {
+          // cycle to the the threeJS container
+          $("#application_ar").hide();
+          $("video").hide();
+          $("canvas").hide();
+          $("#application_threejs").hide();
+          $("#application_p5").show();
+        }
+      }
+
+
+
+      // this function will run every time a message comes in from the p5 application
+      // message: a string
+      // ref: (optional) a reference to a function
+      var callbackP5;
+      function messageFromP5(message, ref) {
+        console.log("a message was received from the p5 container: " + message);
+        if (ref && !callbackP5) {
+          callbackP5 = ref;
+        }
+
+        if (message === 'P5Click') {
+          // cycle to the the threeJS container
+          $("#application_p5").hide();
+          $("#application_threejs").hide();
+          $("#application_ar").show();
+          $("video").show();
+          $("canvas").show();
+        }
+
+      }
+
+
+
+    </script>
+
+
+	<!-- AR Sketch -->
+	<script src="arsketch.js"></script>
+
+
+	<!-- ar application goes inside of this div -->
+  <!-- AR Sketch -->
+  <script src="arsketch.js"></script>
+
+
+  <!-- ar application goes inside of this div -->
+  <div id="application_ar">
+    <button id="back_to_menu">Back to Menu</button>
+
+  <!-- modal box to tell the user to rotate their device into landscape mode - the AR toolkit only reliably renders in landscape mode -->
+  <!--div id="portrait_warning">
+    <h1>Rotate your device into landscape mode!</h1>
+  </div-->
+
+  <!-- Define A-Frame VR Scene and set it up so that it will be manipulated through AR.js -->
+  <a-scene id="ARScene" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono;'>
+
+    <!-- set up all of the AR markers we will be working with along with links to their 'pattern' files -->
+    <a-marker id="hiro" preset="custom" url="markers/patt.hiro">
+    </a-marker>
+
+    <a-assets>
+      <a-asset id="statue_obj" src="models/statue/model.obj"></a-asset>
+      <a-asset id="statue_mtl" src="models/statue/materials.mtl"></a-asset>
+    </a-assets>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+</div>
+
+
+	<!-- iframes for p5 and threeJS scenes -->
+    <iframe id="application_threejs" src="application_threejs/index.html"></iframe>
+    <iframe id="application_p5" src="application_p5/index.html"></iframe>
+
+
+	<script>
+
+      document.getElementById('back_to_menu').addEventListener('click', function() {
+        console.log("button click");
+        $("#application_ar").hide();
+        $("video").hide();
+        $("canvas").hide();
+        $("#application_threejs").hide();
+        $("#application_p5").show();
+      });
+
+      // resize and center logic for all applications
+      var applicationSizing =  [
+        {
+          name: '#application_threejs',
+          width: 800,
+          height: 600,
+          lastWW: 0,
+          lastWH: 0
+        },
+        {
+          name: '#application_p5',
+          width: 1000,
+          height: 562,
+          lastWW: 0,
+          lastWH: 0
+        }
+      ];
+
+      $(document).ready(function() {
+
+        function doResize() {
+          var ww = $.windowWidth();
+          var wh = $.windowHeight();
+
+          for (var i = 0; i < applicationSizing.length; i++) {
+	        var container = $(applicationSizing[i].name);
+
+            if (container.is(":visible")) {
+
+	            var lastWW = applicationSizing[i].lastWW;
+	            var lastWH = applicationSizing[i].lastWH;
+	            var desiredWidth = applicationSizing[i].width;
+	            var desiredHeight = applicationSizing[i].height;
+
+	            if (lastWW != ww || lastWH != wh) {
+
+	              applicationSizing[i].lastWW = ww;
+	              applicationSizing[i].lastWH = wh;
+
+	              // plenty of space on all sides, float the window in the center at full resolution
+	              if (ww > desiredWidth && wh > desiredHeight) {
+	                scalingFactor = 1.0;
+        					container.css('-ms-zoom', scalingFactor);
+        					container.css('-moz-transform', scalingFactor);
+        					container.css('-moz-transform-origin', '0 0');
+        					container.css('-o-transform', scalingFactor);
+        					container.css('-o-transform-origin', '0 0');
+        					container.css('-webkit-transform', scalingFactor);
+        					container.css('-webkit-transform-origin', '0 0');
+
+	                var left = parseInt((ww-desiredWidth)/2);
+	                var top = parseInt((wh-desiredHeight)/2);
+	                container.css('left', left+'px');
+	                container.css('top', top+'px');
+	              }
+
+	              // plenty of space horizontally, the limiting factor is the height of the page
+	              else if (ww > desiredWidth) {
+	                scalingFactor = wh/desiredHeight;
+        					container.css('-ms-zoom', scalingFactor);
+        					container.css('-moz-transform', 'scale(' + scalingFactor + ')');
+        					container.css('-moz-transform-origin', '0 0');
+        					container.css('-o-transform', 'scale(' + scalingFactor + ')');
+        					container.css('-o-transform-origin', '0 0');
+        					container.css('-webkit-transform', 'scale(' + scalingFactor + ')');
+        					container.css('-webkit-transform-origin', '0 0');
+
+	                var left = parseInt((ww-desiredWidth*scalingFactor)/2);
+	                var top = 0;
+	                container.css('left', left+'px');
+	                container.css('top', top+'px');
+	              }
+
+	              // plenty of space vertically, the limiting factor is the width of the page
+	              else if (wh > desiredHeight) {
+	                scalingFactor = ww/desiredWidth;
+        					container.css('-ms-zoom', scalingFactor);
+        					container.css('-moz-transform', 'scale(' + scalingFactor + ')');
+        					container.css('-moz-transform-origin', '0 0');
+        					container.css('-o-transform', 'scale(' + scalingFactor + ')');
+        					container.css('-o-transform-origin', '0 0');
+        					container.css('-webkit-transform', 'scale(' + scalingFactor + ')');
+        					container.css('-webkit-transform-origin', '0 0');
+
+	                var left = 0;
+	                var top = parseInt((wh-desiredHeight*scalingFactor)/2);
+	                container.css('left', left+'px');
+	                container.css('top', top+'px');
+	              }
+
+	              // limited space on all sides
+	              else {
+	                var scalingFactorW = ww/desiredWidth;
+	                var scalingFactorH = wh/desiredHeight;
+
+	                if (scalingFactorW < scalingFactorH) {
+	                  scalingFactor = scalingFactorW;
+        					  container.css('-ms-zoom', scalingFactor);
+        					  container.css('-moz-transform', 'scale(' + scalingFactor + ')');
+        					  container.css('-moz-transform-origin', '0 0');
+        					  container.css('-o-transform', 'scale(' + scalingFactor + ')');
+        					  container.css('-o-transform-origin', '0 0');
+        					  container.css('-webkit-transform', 'scale(' + scalingFactor + ')');
+        					  container.css('-webkit-transform-origin', '0 0');
+
+	                  var left = 0;
+	                  var top = parseInt((wh-desiredHeight*scalingFactor)/2);
+	                  container.css('left', left+'px');
+	                  container.css('top', top+'px');
+	                }
+	                else {
+	                  scalingFactor = scalingFactorH;
+        					  container.css('-ms-zoom', scalingFactor);
+        					  container.css('-moz-transform', 'scale(' + scalingFactor + ')');
+        					  container.css('-moz-transform-origin', '0 0');
+        					  container.css('-o-transform', 'scale(' + scalingFactor + ')');
+        					  container.css('-o-transform-origin', '0 0');
+        					  container.css('-webkit-transform', 'scale(' + scalingFactor + ')');
+        					  container.css('-webkit-transform-origin', '0 0');
+
+	                  var left = parseInt((ww-desiredWidth*scalingFactor)/2);
+	                  var top = 0;
+	                  container.css('left', left+'px');
+	                  container.css('top', top+'px');
+	                }
+	              }
+				      window.scrollTo(0, 1);
+            	}
+	        }
+	      }
+
+          setTimeout(doResize,10);
+        }
+
+        doResize();
+
+        // prevent scrolling / scaling / pinching on mobile
+        window.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        window.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+      });
+
+    </script>
+  </body>
+</html>

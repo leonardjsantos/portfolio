@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en-us">
+	<head>
+		<title>3D Scene Rotation With Mouse</title>
+		<meta charset="utf-8" />
+
+		<!-- embedded styles -->
+		<style type="text/css">
+		  body {
+				margin: 0px;
+			}
+
+			#viewerWindow {
+				width: 800px;
+				height: 600px;
+				position: absolute;
+				overflow: hidden;
+			}
+
+			#sendmessage {
+				position: fixed;
+				top: 0px;
+				left: 0px;
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div id="viewerWindow">
+			<a-entity class="link"
+				geometry="primitive: plane; height: 1; width: 1"></a-entity>
+			<a-cursor id="cursor"></a-cursor>
+		</div>
+		<button id="sendmessage">Return to Menu</button>
+
+		<!-- jQuery -->
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/jquery.documentsize.js"></script>
+		<script src="js/jquery.mobile-events.min.js"></script>
+
+		<!-- threeJS library -->
+		<script src="js/three.min.js"></script>
+		<script src="js/helpers.js"></script>
+		<script src="js/MTLLoader.js"></script>
+		<script src="js/OBJLoader.js"></script>
+		<script src="../libraries/aframe.min.js"></script>
+
+		<!-- application code -->
+		<script>
+
+			// main
+			(function(){
+
+				// you can use this function to have this application communicate with the main program
+				var sendMessageToParent = window.parent.messageFromThreeJS
+
+				// ... and this function will run when the main program sends this application a message
+				function receiveMessgeFromMain(message) {
+	        console.log("a message was received from the main program: " + message);
+	      }
+
+				// send an initial message to the parent to let them know we're ready to go
+				if (sendMessageToParent) {
+					sendMessageToParent('Hello from ThreeJS', receiveMessgeFromMain);
+				}
+
+				// button to go to the AR system
+				$("#sendmessage").tap(function()  {
+					sendMessageToParent("ThreeJSClick");
+				});
+
+				// resize and center logic
+				$(document).ready(function() {
+
+					// prevent scrolling / scaling / pinching on mobile
+					window.addEventListener('touchmove', function(e) {
+					    e.preventDefault();
+					}, { passive: false });
+
+					window.addEventListener('touchstart', function(e) {
+					    e.preventDefault();
+					}, { passive: false });
+
+				});
+
+
+				// set up our scene
+				var scene = new THREE.Scene();
+
+				// set up our camera
+				var camera = new THREE.PerspectiveCamera(
+			    	75,                                     					// 75: field of view
+					$("#viewerWindow").width() / $("#viewerWindow").height(), 	// aspect ratio
+					0.1,                                    					// 0.1: near clipping plane
+					1000                                    					// 1000: far clipping plane
+				);
+
+				// renderer
+				var renderer = new THREE.WebGLRenderer({
+					alpha: true,    //transparent background
+					antialias: true //smooth edges
+				});
+
+				// set up some lighting for the scene
+				var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
+				keyLight.position.set(-100, 0, 100);
+
+				var fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75);
+				fillLight.position.set(100, 0, 100);
+
+				var backLight = new THREE.DirectionalLight(0xffffff, 1.0);
+				backLight.position.set(100, 0, -100).normalize();
+
+				scene.add(keyLight);
+				scene.add(fillLight);
+				scene.add(backLight);
+
+
+				// load model#1 - statue
+				var mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setTexturePath('models/portrait/textures/');
+				mtlLoader.setPath('models/portrait/source/src/');
+				mtlLoader.load('sirobert.mtl', function (materials) {
+
+						materials.preload();
+
+						var objLoader = new THREE.OBJLoader();
+						objLoader.setMaterials(materials);
+						objLoader.setPath('models/portrait/source/src/');
+						objLoader.load('sirobert.obj', function (object) {
+
+								group.add(object);
+								object.position.y = 0.6;
+								object.scale.x = 0.1;
+								object.scale.y = 0.1;
+								object.scale.z = 0.1;
+
+						});
+				});
+
+/*
+				// load model#2 - lion head
+				var mtlLoader = new THREE.MTLLoader();
+				mtlLoader.setTexturePath('models/lion/textures/');
+				mtlLoader.setPath('models/lion/source/src/');
+				mtlLoader.load('bm-lion-fount-edit.mtl', function (materials) {
+
+				    materials.preload();
+
+				    var objLoader = new THREE.OBJLoader();
+				    objLoader.setMaterials(materials);
+				    objLoader.setPath('models/lion/source/src/');
+				    objLoader.load('bm-lion-fount-edit.obj', function (object) {
+
+				        group.add(object);
+				        object.position.y = 1.5;
+								object.scale.x = 1.5;
+								object.scale.y = 1.5;
+								object.scale.z = 1.5;
+
+				    });
+				});
+*/
+
+				// set the renderer to be the same size as the viewer window
+				renderer.setSize($("#viewerWindow").width(), $("#viewerWindow").height());
+
+				// add the renderer to the document
+				$("#viewerWindow").append( renderer.domElement );
+
+				// create a group to hold all elements
+				var group = new THREE.Group();
+				scene.add(group);
+
+
+				
+
+				// set up some geometry and materials for our cubes
+				var geometry = new THREE.BoxGeometry(5, 0.25, 5);
+				var material = new THREE.MeshBasicMaterial({color:0x778899});
+
+				// center cube (a placeholder, or you can use it as a pedastal to hold your custom 3D content)
+				var cube = new THREE.Mesh(geometry, material);
+				group.add(cube);
+
+				// ground plane
+				var groundPlaneGeometry = new THREE.PlaneGeometry(100, 100);
+				var groundPlaneMaterial = createGroundPlaneCanvasMaterial('#000000', 'white');
+				var groundPlane = new THREE.Mesh(groundPlaneGeometry, groundPlaneMaterial);
+				groundPlane.rotation.x = Math.radians(-90);
+				group.add(groundPlane);
+
+				// the sky that surrounds the scene (adjust colors or remove as desired)
+				skyCylinderGeometry = new THREE.CylinderGeometry(50,50,60,16,16,true);
+				var skyPlaneMaterial = createSkyPlaneCanvasMaterial('#000000', 'white');
+				var skyCylinder = new THREE.Mesh(skyCylinderGeometry, skyPlaneMaterial);
+				group.add(skyCylinder);
+				skyCylinder.position.y = 30;
+
+				// position the camera
+				camera.position.z = 5;
+				camera.position.y = 1.75;
+
+				// our animation loop
+				var render = function()
+				{
+					renderer.setSize($("#viewerWindow").width(), $("#viewerWindow").height());
+
+					requestAnimationFrame(render);
+					renderer.render(scene, camera);
+
+					// handle camera orbit
+					if (mouseDown)
+					{
+						// how much have we moved from our initial position?
+						mouseMoveAmountX = mouseX - initialClickX;
+						mouseMoveAmountY = mouseY - initialClickY;
+
+						// translate this motion into rotation
+						group.rotation.y += Math.radians(mouseMoveAmountX);
+						group.rotation.x += Math.radians(mouseMoveAmountY);
+
+						// limit rotation up/down
+						if (group.rotation.x < -0.15) {
+							group.rotation.x = -0.15
+						}
+						else if (group.rotation.x > 0.75) {
+							group.rotation.x = 0.75;
+						}
+
+						// redefine initial click position
+						initialClickX = mouseX;
+						initialClickY = mouseY;
+					}
+
+					// handle camera inertia
+					else
+					{
+						// handle spinning velocity
+						if (Math.abs(mouseMoveAmountX) > 0.1 || Math.abs(mouseMoveAmountY) > 0.1)
+						{
+							group.rotation.y += Math.radians(mouseMoveAmountX);
+							group.rotation.x += Math.radians(mouseMoveAmountY);
+
+							mouseMoveAmountX *= 0.95;
+							mouseMoveAmountY *= 0.95;
+
+							// limit rotation up/down
+							if (group.rotation.x < -0.15) {
+								group.rotation.x = -0.15
+							}
+							else if (group.rotation.x > 0.75) {
+								group.rotation.x = 0.75;
+							}
+						}
+					}
+				};
+
+				// global mouse event handlers
+				var mouseDown = false;
+				var mouseX = 0;
+				var mouseY = 0;
+				var initialClickX = 0;
+				var initialClickY = 0;
+				var mouseMoveAmountX = 0;
+				var mouseMoveAmountY = 0;
+
+
+				// mousePressed / tapStart
+				$("#viewerWindow").tapstart( mousePressed );
+				function mousePressed(event) {
+
+					// compute initial click position
+					var offset = $(this).offset();
+
+					// indicate that the mouse is down and capture its current position
+					mouseDown = true;
+
+					initialClickX = event.pageX - offset.left;
+					initialClickY = event.pageY - offset.top;
+
+					// compute the position of the mouse
+					mouseX = event.pageX - offset.left;
+					mouseY = event.pageY - offset.top;
+
+					// reset rotation velocity
+					mouseMoveAmountX = 0;
+					mouseMoveAmountY = 0;
+				}
+
+				// mouseUp
+				$("#viewerWindow").tapend(mouseUp);
+
+				function mouseUp() {
+					mouseDown = false;
+				}
+
+				// mouseMoved
+				$("#viewerWindow").tapmove(function(event) {
+
+					// compute offset of the position of this div
+					var offset = $(this).offset();
+
+					// compute the position of the mouse
+					mouseX = event.pageX - offset.left;
+					mouseY = event.pageY - offset.top;
+				});
+
+
+				// finally render the scene
+				render();
+
+		   })();
+
+
+
+
+		   function createSkyPlaneCanvasMaterial(color1, color2) {
+			   // create a canvas element
+			   var canvas = document.createElement('canvas');
+			   canvas.width = 256;
+			   canvas.height = 256;
+
+			   // set up canvas context (?)
+			   var canvasContext = canvas.getContext('2d');
+
+			   // define position of radial gradient
+			   var x = 128;
+			   var y = 128;
+			   var innerRadius = 75;
+			   var outerRadius = 100;
+			   radius = 200;
+
+			   // create radial gradient in the context of the canvas
+			   var gradient = canvasContext.createLinearGradient(0, 0, 0, 270);
+			   gradient.addColorStop(0, color1);
+			   gradient.addColorStop(1, 'white');
+
+			   // draw a circle on the canvas using the defined radial gradient
+			   canvasContext.rect(0,0,256,256);
+			   canvasContext.fillStyle = gradient;
+			   canvasContext.fill();
+
+			   // now use the canvas as a three.js texture
+			   var groundTexture = new THREE.Texture(canvas);
+			   groundTexture.needsUpdate = true;
+
+			   // ... and finally apply the texture to a material
+			   var material = new THREE.MeshBasicMaterial({
+				   map: groundTexture,
+				   side: THREE.DoubleSide
+			   });
+
+			   // send it back
+			   return material;
+		   }
+
+		   function createGroundPlaneCanvasMaterial(color1, color2) {
+			   // create a canvas element
+			   var canvas = document.createElement('canvas');
+			   canvas.width = 256;
+			   canvas.height = 256;
+
+			   // set up canvas context (?)
+			   var canvasContext = canvas.getContext('2d');
+
+			   // define position of radial gradient
+			   var x = 128;
+			   var y = 128;
+			   var innerRadius = 150;
+			   var outerRadius = 180;
+			   radius = 200;
+
+			   // create radial gradient in the context of the canvas
+			   var gradient = canvasContext.createRadialGradient(x, y, innerRadius, x, y, outerRadius);
+			   gradient.addColorStop(0, color1);
+			   gradient.addColorStop(1, color2);
+
+			   // draw a circle on the canvas using the defined radial gradient
+			   canvasContext.arc(x, y, radius, 0, 2 * Math.PI);
+			   canvasContext.fillStyle = gradient;
+			   canvasContext.fill();
+
+			   // now use the canvas as a three.js texture
+			   var groundTexture = new THREE.Texture(canvas);
+			   groundTexture.needsUpdate = true;
+
+			   // ... and finally apply the texture to a material
+			   var material = new THREE.MeshBasicMaterial({
+				   map: groundTexture,
+				   side: THREE.DoubleSide
+			   });
+
+			   // send it back
+			   return material;
+		   }
+
+		</script>
+	</body>
+</html>

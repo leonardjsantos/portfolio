@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="p5/p5.min.js"></script>
+    <script src="p5/addons/p5.dom.min.js"></script>
+    <script src="p5/addons/p5.sound.min.js"></script>
+    <style>
+      body {
+        padding: 0;
+			  margin: 0;
+      }
+      #viewerWindow {
+  			width: 1000px;
+  			height: 562px;
+  			position: absolute;
+  			overflow: hidden;
+  	  }
+  		#sendmessage {
+  			position: fixed;
+  			top: 15px;
+  			left: 60px;
+        display: none;
+  		}
+
+    </style>
+
+    <!-- jQuery -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.documentsize.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-events.min.js"></script>
+
+	<!-- our p5 sketch -->
+    <script src="sketch.js"></script>
+
+  </head>
+  <body>
+    <div id="viewerWindow"></div>
+	  <button id="sendmessage">AR Mode</button>
+
+    <script>
+      // resize and center logic
+      $(document).ready(function() {
+
+        // prevent scrolling / scaling / pinching on mobile
+        window.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+        window.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+/*
+3DHOP - 3D Heritage Online Presenter
+Copyright (c) 2014, Marco Callieri - Visual Computing Lab, ISTI - CNR
+All rights reserved.    
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#cover{
+	display					:none;
+	position:				absolute; 
+	z-index					:1;
+	width					:100%; 
+	height					:100%;
+	top						:0; 
+	left					:0; 
+	background-color		:rgba(50, 50, 50, 0.4); 
+	-webkit-user-select		:none; 
+	-webkit-touch-callout	:none; 
+	-khtml-user-select		:none; 
+	-moz-user-select		:none; 
+	-ms-user-select			:none; 
+	user-select				:none; 
+	touch-action			:none; 
+	-ms-touch-action		:none; 
+}
+
+#title{
+	width					:100%; 
+	top						:10; 
+	left					:0; 
+	position				:absolute; 
+	-webkit-user-select		:none; 
+	-webkit-touch-callout	:none; 
+	-khtml-user-select		:none; 
+	-moz-user-select		:none; 
+	-ms-user-select			:none; 
+	user-select				:none; 
+	touch-action			:none; 
+	-ms-touch-action		:none; 
+}
+
+#title img{
+	height					:75;
+	text-decoration			:none; 
+	-webkit-user-select		:none; 
+	-webkit-touch-callout	:none; 
+	-khtml-user-select		:none; 
+	-moz-user-select		:none; 
+	-ms-user-select			:none; 
+	user-select				:none; 
+	touch-action			:none; 
+	-ms-touch-action		:none; 
+}
+
+.panel {
+	width					:550px; 
+	font-size				:80%; 
+	font-family				:verdana; 
+	font-style				:italic; 
+	color					:#f8f8f8; 
+	text-align				:center; 
+	background-color		:rgba(50, 50, 50, 0.75); 
+	border					:1px solid gray; 
+	border-radius			:10px;
+	box-shadow				:1px 1px 10px #f8f8f8;
+	-webkit-box-shadow		:1px 1px 10px #f8f8f8;
+	-moz-box-shadow			:1px 1px 10px #f8f8f8;
+	cursor					:default; 
+	text-decoration			:none; 
+	-webkit-user-select		:none; 
+	-webkit-touch-callout	:none; 
+	-khtml-user-select		:none; 
+	-moz-user-select		:none; 
+	-ms-user-select			:none; 
+	user-select				:none; 
+	touch-action			:none; 
+	-ms-touch-action		:none; 
+}
+
+.close {
+	position				:relative;
+	margin-left				:99.5%; 
+	margin-top				:-25px;
+	width					:25px; 
+	height					:25px;
+	background-color		:rgba(50, 50, 50, 1.0); 
+	border					:1px solid gray; 
+	border-radius			:50%; 
+	box-shadow				:1px -1px 10px #f8f8f8;
+	-webkit-box-shadow		:1px -1px 10px #f8f8f8;
+	-moz-box-shadow			:1px -1px 10px #f8f8f8;
+	-webkit-user-select		:none; 
+	-webkit-touch-callout	:none; 
+	-khtml-user-select		:none; 
+	-moz-user-select		:none; 
+	-ms-user-select			:none; 
+	user-select				:none; 
+	touch-action			:none; 
+	-ms-touch-action		:none; 
+}
+
+.close:hover {
+	cursor					:pointer; 
+}
+
+a:link, a:visited { 
+	text-decoration:none;
+	font-weight:bold;
+	color:#AEB404; 
+}
+
+a:hover { 
+	text-decoration:none; 
+	font-weight:bold;
+	color:#D7DF01; 
+}
+
+#toolbar  { 
+	width			:70px; 
+	height			:430px;
+	margin-left		:-80px;
+	padding-top		:12px;
+	padding-left	:18px;
+    background		:url(../skins/backgrounds/dark.jpg) no-repeat center center; 
+}
+
+#toolbar img { 
+	width			:50px; 
+	height			:50px;
+}
+
+#draw-canvas { 
+	/* IE10 Consumer Preview */ 
+	background-image: -ms-radial-gradient(center, circle closest-side, #C94727 0%, #450005 100%);
+
+	/* Mozilla Firefox */ 
+	background-image: -moz-radial-gradient(center, circle closest-side, #C94727 0%, #450005 100%);
+
+	/* Opera */ 
+	background-image: -o-radial-gradient(center, circle closest-side, #C94727 0%, #450005 100%);
+
+	/* Webkit (Safari/Chrome 10) */ 
+	background-image: -webkit-gradient(radial, center center, 0, center center, 140, color-stop(0, #C94727), color-stop(1, #450005));
+
+	/* Webkit (Chrome 11+) */ 
+	background-image: -webkit-radial-gradient(center, circle closest-side, #C94727 0%, #450005 100%);
+
+	/* W3C Markup, IE10 Release Preview */ 
+	background-image: radial-gradient(circle closest-side at center, #C94727 0%, #450005 100%);
+}

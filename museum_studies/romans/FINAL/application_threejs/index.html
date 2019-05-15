@@ -1,0 +1,294 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta content="charset=UTF-8"/>
+<title>VR: THE SIMS ROMANS</title>
+<!--STYLESHEET-->
+<link type="text/css" rel="stylesheet" href="stylesheet/3dhop.css"/>
+<link type="text/css" rel="stylesheet" href="stylesheet/statue.css"/> 
+
+<!--SPIDERGL-->
+<script type="text/javascript" src="js/spidergl.js"></script>
+<!--JQUERY-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--PRESENTER-->
+<script type="text/javascript" src="js/presenter.js"></script>
+<!--3D MODELS LOADING AND RENDERING-->
+<script type="text/javascript" src="js/nexus.js"></script>
+<script type="text/javascript" src="js/ply.js"></script>
+<!--TRACKBALLS-->
+<script type="text/javascript" src="js/trackball_sphere.js"></script>
+<script type="text/javascript" src="js/trackball_turntable.js"></script>
+<script type="text/javascript" src="js/trackball_turntable_pan.js"></script>
+<script type="text/javascript" src="js/trackball_pantilt.js"></script>
+<!--UTILITY-->
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/statue.js"></script>
+
+<style>
+
+  #sendmessage {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    z-index: 105;
+  }
+
+
+</style>
+
+</head>
+
+<body>
+
+    <button id="sendmessage">Return to Menu</button>
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery.documentsize.js"></script>
+    <script src="js/jquery.mobile-events.min.js"></script>
+
+    <script>
+
+      // you can use this function to have this application communicate with the main program
+      var sendMessageToParent = window.parent.messageFromThreeJS
+
+      // ... and this function will run when the main program sends this application a message
+      function receiveMessgeFromMain(message) {
+        console.log("a message was received from the main program: " + message);
+      }
+
+      // send an initial message to the parent to let them know we're ready to go
+      if (sendMessageToParent) {
+        sendMessageToParent('Hello from ThreeJS', receiveMessgeFromMain);
+      }
+
+      // button to go to the AR system
+      $("#sendmessage").tap(function()  {
+        sendMessageToParent("ThreeJSClick");
+      });
+
+    </script>
+
+    <div id="3dhop" class="tdhop" onmousedown="if (event.preventDefault) event.preventDefault()"><div id="tdhlg"></div>
+        <table id="cover" onclick="if($('#help_pane').css('display')=='table') helpSwitch(); else if ($('#info_pane_vertical').css('display')=='table') infoSwitch('vertical'); else if ($('#info_pane_horizontal').css('display')=='table') infoSwitch('horizontal');">
+            <tr align="center">
+                <td valign="left">
+
+            <table class="panel" id="help_pane" cellspacing="10" onclick="helpSwitch()">
+                
+            </table>
+
+            <table class="panel" id="info_pane_vertical" cellspacing="10" onclick="infoSwitch('vertical')">
+            <tbody>
+                <tr><td colspan="2"><img class="close" id="help_close_on" src="skins/minimal_light/close_on.png" onclick="helpSwitch();$('#help').css('opacity','0.5');" style="display:none;"/><img class="close" id="help_close" src="skins/minimal_light/close.png"/><hr></td></tr>
+                <tr><td colspan="2"></td></tr>
+                <tr align="center">
+                <td style="vertical-align:top;">
+                    <img id="hs1_img" src="assets/img4.png" style="max-width:300px; max-height:350px;"/>
+                </td>
+                
+                <td style="vertical-align:top;">
+                    <p class="scroll" style="max-height:350px; font-style:normal; text-align:justify; margin-top:-3px; padding:3px;"></p>
+                </td>
+               
+                </tr>
+            </tbody>
+            </table>
+
+            <table class="panel" id="info_pane_horizontal" cellspacing="10" onclick="infoSwitch('horizontal')">
+                <tbody>
+                    <tr><td><img class="close" id="help_close_on" src="skins/minimal_light/close_on.png" onclick="helpSwitch();$('#help').css('opacity','0.5');" style="display:none;"/><img class="close" id="help_close" src="skins/minimal_light/close.png"/><hr></td></tr>
+                    <tr align="center"><td>
+                      
+                            <img id="hs2_img" src="assets/img3.png" style="max-width:525px; max-height:500px;"/>
+
+                        </td>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            </td>
+            </tr>
+        </table>
+
+ <div id="toolbar">
+  <img id="home"     title="Home"                  src="skins/dark/home.png"            /><br/>
+  <img id="zoomin"   title="Zoom In"               src="skins/dark/zoomin.png"          /><br/>
+  <img id="zoomout"  title="Zoom Out"              src="skins/dark/zoomout.png"         /><br/>
+  <img id="light_on" title="Disable Light Control" src="skins/dark/lightcontrol_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="light"    title="Enable Light Control"  src="skins/dark/lightcontrol.png"    /><br/>
+  <img id="pick_on"  title="Disable PickPoint Mode"src="skins/dark/pick_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="pick"       title="Enable PickPoint Mode" src="skins/dark/pick.png"         /><br/>
+  <img id="hotspot_on" title="Hide Hotspots"         src="skins/dark/pin_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="hotspot"    title="Show Hotspots"         src="skins/dark/pin.png"          /><br/>
+  <img id="full_on"  title="Exit Full Screen"      src="skins/dark/full_on.png"         style="position:absolute; visibility:hidden;"/><br/>
+  <img id="full"     title="Full Screen"           src="skins/dark/full.png"            />
+ </div>
+
+<div id="pickpoint-box" class="output-box">
+XYZ picked point <hr/>
+<span id="pickpoint-output" class="output-text" onmousedown="event.stopPropagation()">[0,  0 , 0 ]</span>
+</div>
+
+<canvas id="draw-canvas" style="background-image: url(skins/backgrounds/light.jpg)"/>
+
+</div>
+</body>
+
+<script type="text/javascript">
+var presenter = null;
+
+function setup3dhop() {
+	presenter = new Presenter("draw-canvas");
+
+	presenter.setScene({
+		meshes: {
+			"Laurana" : { url: "models/singleres/laurana.ply" },
+			"Box" : {
+				url: "models/singleres/cube.ply",
+				transform : { matrix: SglMat4.scaling([11, 0.5, 11.0]) },
+			},
+            "sphere" : { url: "models/singleres/sphere.ply"},
+		},
+		modelInstances : {
+			"Base" : {
+				mesh : "Box"
+			},
+			"Center" : {
+				mesh : "Laurana",
+				transform : { matrix: [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 250.0, -50.0, 1.0] },
+			}
+        },
+        spots : {
+            // chest
+            //-25.0, 125.0, 78.0
+            "spot1" : {
+                mesh: "sphere",
+                transform: {
+                    matrix: SglMat4.mul(SglMat4.translation([-28.32 , 125.35 , 45.95]), SglMat4.scaling([20 , 30 , 10])),
+                    color: [1.0, 1.0, 1.0, 1.0]
+                }
+            },
+            // head
+            // [44.87 , 455.26 , 27.49]
+            "spot2" : {
+                mesh: "sphere",
+                transform: {
+                    matrix: SglMat4.mul(SglMat4.translation([43.39 , 465.94 , 16.20]), SglMat4.scaling([20 , 30 , 10])),
+                    color: [0.0, 0.25, 1.0, 0.4]
+                }
+            },
+
+            // back of head:  -26.71 , 420.41 , -163.49
+            "spot3" : {
+                mesh: "sphere", 
+                transform: {
+                    matrix: SglMat4.mul(SglMat4.translation([ -26.71 , 420.41 , -163.49]), SglMat4.scaling([20 , 30 , 10])),
+                    color: [0.0, 0.25, 1.0, 0.4]
+                }
+            }
+        },
+
+        trackball: {
+            type: TurntablePanTrackball,
+            trackOptions: {
+                startPhi: 20.0,
+                startTheta: 20.0,
+                startDistance: 4.2,
+                minMaxDist   : [1.0, 5.0],
+                minMaxTheta  :[-90.0, 90.0]
+            }
+        },
+
+		space : {
+			centerMode : "explicit",
+			explicitCenter : [0.0, 100.0, 0.0],
+			radiusMode : "specific",
+            whichInstanceRadius  : "Base",
+            cameraFOV : 40.0
+		}
+    });
+    presenter._onEndPickingPoint = onEndPick;
+    presenter.setSpotVisibility(HOP_ALL, false, true);
+    presenter._onPickedSpot = onPickedSpt;
+    presenter._onPickedInstance = onPickedInstance;
+
+}
+
+function actionsToolbar(action) {
+	if(action=='home') presenter.resetTrackball();
+	else if(action=='zoomin') presenter.zoomIn();
+	else if(action=='zoomout') presenter.zoomOut();
+    else if(action=='light' || action=='light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); }
+    else if(action=='hotspot'|| action=='hotspot_on') {
+    presenter.toggleSpotVisibility(HOP_ALL, true); presenter.enableOnHover(!presenter.isOnHoverEnabled());
+    hotspotSwitch(); }
+    else if(action=='pick' || action=='pick_on') { presenter.enablePickpointMode(!presenter.isPickpointModeEnabled()); pickpointSwitch(); }
+	else if(action=='full'  || action=='full_on') fullscreenSwitch();
+}
+
+function onPickedSpt(id) {
+    switch(id) {
+        case 'spot1' : infoSwitch('vertical'); setInfo(id); break;
+        // presenter.animateToTrackballPosition([[38.58 , 467.76 , 18.52]]); break;
+        case 'spot2' : infoSwitch('horizontal'); setInfo(id); break;
+        case 'spot3' : infoSwitch('horizontal'); setInfo(id); break;
+
+        
+    }
+}
+
+
+function onPickedInstance(id) {
+    if (presenter._lastPickedSpot != "null") return;
+    switch(id) {
+        case 'spot1': alert("hello"); break;
+    }
+}
+
+function onEndPick(point) {
+    var x = point[0].toFixed(2);
+    var y = point[1].toFixed(2);
+    var z = point[2].toFixed(2);
+    $('#pickpoint-output').html("[ "+x+" , "+y+" , "+z+" ]");
+}
+
+$(document).ready(function(){
+	init3dhop();
+
+    setup3dhop();
+
+    initPanels();
+
+	moveToolbar(null,(($('#3dhop').parent().height()-415)/2));
+
+	$("#toolbar")
+		.animate({
+			marginLeft: "-5"
+		}, 1500 );
+
+	$(window).on('resize', function () {
+		moveToolbar(null,(($('#3dhop').parent().height()-415)/2));
+		presenter.ui.postDrawEvent();
+	});
+});
+
+document.addEventListener("MSFullscreenChange", function () {
+	if(!document.msFullscreenElement) { moveToolbar(null,($('#toolbar').parent().height()-$('#toolbar').innerHeight())/2); }
+	else { moveToolbar(null,(screen.height-$('#toolbar').innerHeight())/2); }
+}, false);
+document.addEventListener("mozfullscreenchange", function () {
+	if(!document.mozFullScreen) { moveToolbar(null,($('#toolbar').parent().height()-$('#toolbar').innerHeight())/2); }
+	else { moveToolbar(null,(screen.height-$('#toolbar').innerHeight())/2); }
+}, false);
+document.addEventListener("webkitfullscreenchange", function () {
+	if(!document.webkitIsFullScreen) { moveToolbar(null,($('#toolbar').parent().height()-$('#toolbar').innerHeight())/2); }
+	else { moveToolbar(null,(screen.height-$('#toolbar').innerHeight())/2); }
+}, false);
+</script>
+
+</html>

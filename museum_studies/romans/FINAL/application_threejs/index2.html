@@ -1,0 +1,227 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta content="charset=UTF-8"/>
+<title>3DHOP - Discovering Tutankhamun</title>
+<!--STYLESHEET-->
+<link type="text/css" rel="stylesheet" href="stylesheet/3dhop.css"/>
+<link type="text/css" rel="stylesheet" href="stylesheet/tutankhamon.css"/> 
+<!--SPIDERGL-->
+<script type="text/javascript" src="js/spidergl.js"></script>
+<!--JQUERY-->
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--PRESENTER-->
+<script type="text/javascript" src="js/presenter.js"></script>
+<!--3D MODELS LOADING AND RENDERING-->
+<script type="text/javascript" src="js/nexus.js"></script>
+<script type="text/javascript" src="js/ply.js"></script>
+<!--TRACKBALLS-->
+<script type="text/javascript" src="js/trackball_sphere.js"></script>
+<script type="text/javascript" src="js/trackball_turntable.js"></script>
+<script type="text/javascript" src="js/trackball_pantilt.js"></script>
+<!--UTILITY-->
+<script type="text/javascript" src="js/init.js"></script>
+<script type="text/javascript" src="js/tutankhamon.js"></script>
+</head>
+
+<body onload="presenter.animateToTrackballPosition([-30.0, 25.0, 3.0])">
+
+<div id="3dhop" class="tdhop" onmousedown="if (event.preventDefault) event.preventDefault()"><div id="tdhlg"></div>
+ <table id="cover" onclick="if($('#help_pane').css('display')=='table') helpSwitch(); else if ($('#info_pane_vertical').css('display')=='table') infoSwitch('vertical'); else if ($('#info_pane_horizontal').css('display')=='table') infoSwitch('horizontal');">
+  <tr align="center"><td valign="center">
+
+
+
+   <table class="panel" id="help_pane" cellspacing="10" onclick="helpSwitch()">
+	<tbody>
+	   <tr><td colspan="3"><h3><img class="close" id="help_close_on" src="skins/minimal_light/close_on.png" onclick="helpSwitch();$('#help').css('opacity','0.5');" style="display:none;"/><img class="close" id="help_close" src="skins/minimal_light/close.png"/>3DHOP Help</h3><hr></td></tr>
+	   <tr><td colspan="3"><h4>Controls</h4></td></tr>
+	   <tr><td style="width:43%">Mouse Left Button + Drag</td><td style="width:4%">-</td><td style="width:43%">Rotate The Model</td></tr>
+	   <tr><td style="width:43%">Mouse Left Button + Drag<br/>+ Light Control Enabled</td><td style="width:4%">-</td><td style="width:43%">Move Light Source</td></tr>
+	   <tr><td style="width:43%">Mouse Wheel</td><td style="width:4%">-</td><td style="width:43%">Zoom In And Out</td></tr>
+	   <tr><td colspan="3"><h4>Warning</h4><p class="scroll" id="help_scroll" style="max-height:200px; margin-bottom:10px;">
+		Depending on your internet connection speed you may have to wait a little<br/>
+		before to get the full resolution model</p></td></tr>
+	</tbody>
+   </table>
+
+
+
+   <table class="panel" id="info_pane_vertical" cellspacing="10" onclick="infoSwitch('vertical')">
+	<tbody>
+	   <tr><td colspan="2"><img class="close" id="help_close_on" src="skins/minimal_light/close_on.png" onclick="helpSwitch();$('#help').css('opacity','0.5');" style="display:none;"/><img class="close" id="help_close" src="skins/minimal_light/close.png"/><img src="img/spot.png" style="max-width:500px;"/><hr></td></tr>
+	   <tr><td colspan="2"><h4 class="hs_sub"></h4></td></tr>
+	   <tr>
+		<td style="vertical-align:top;">
+			<img id="hs1_img" src="img/spot1.jpg" style="max-width:300px; max-height:350px;"/><figcaption style='font-size:60%;font-style:italic;text-align:left;margin-top:5px;margin-left:5px;'>Jon Bodsworth</figcaption>
+		</td>
+		<td style="vertical-align:top;">
+			<p class="scroll" style="max-height:350px; font-style:normal; text-align:justify; margin-top:-3px; padding:3px;"><span class="hs_text"></span></p>
+		</td>
+	   </tr>
+	</tbody>
+   </table> 
+
+
+   <table class="panel" id="info_pane_horizontal" cellspacing="10" onclick="infoSwitch('horizontal')">
+	<tbody>
+	   <tr><td><img class="close" id="help_close_on" src="skins/minimal_light/close_on.png" onclick="helpSwitch();$('#help').css('opacity','0.5');" style="display:none;"/><img class="close" id="help_close" src="skins/minimal_light/close.png"/><img src="img/spot.png" style="max-width:500px;"/><hr></td></tr>
+	   <tr align="center"><td>
+			<h4 class="hs_sub"></h4>
+			<img id="hs2_img" src="img/spot2.jpg" style="max-width:525px; max-height:200px;"/><figcaption style='font-size:60%;font-style:italic;text-align:left;margin-top:5px;margin-left:5px;'>Ginny Weeks</figcaption>
+		</td>
+	   </tr>
+	   <tr>
+		<td>
+			<p class="scroll" style="max-height:150px; font-style:normal; text-align:justify; margin-left:-10px; padding:15px;"><span class="hs_text"></span></p>
+		</td>
+	   </tr>
+	</tbody>
+   </table> 
+
+
+  </td></tr>
+ </table>
+
+
+ <div id="title">
+  <center><img src="img/title.png"/></center>
+ </div>
+ <div id="toolbar">
+  <img id="home"       title="Home"                  src="skins/minimal_light/home.png"   /><br/>
+  <img id="zoomin"     title="Zoom In"               src="skins/minimal_light/zoomin.png" /><br/>
+  <img id="zoomout"    title="Zoom Out"              src="skins/minimal_light/zoomout.png"/><br/>
+  <img id="light_on"   title="Disable Light Control" src="skins/minimal_light/lightcontrol_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="light"      title="Enable Light Control"  src="skins/minimal_light/lightcontrol.png"  /><br/>
+  <img id="hotspot_on" title="Hide Hotspots"         src="skins/minimal_light/pin_on.png"   style="position:absolute; visibility:hidden;"/>
+  <img id="hotspot"    title="Show Hotspots"         src="skins/minimal_light/pin.png"    /><br/>
+  <img id="full_on"    title="Exit Full Screen"      src="skins/minimal_light/full_on.png" style="position:absolute; visibility:hidden;"/>
+  <img id="full"       title="Full Screen"           src="skins/minimal_light/full.png"   /><br/>
+  <img id="help_on"    title="Hide Help"             src="skins/minimal_light/help_on.png"  style="position:absolute; visibility:hidden;"/>
+  <img id="help"       title="Show Help"             src="skins/minimal_light/help.png"   />
+ </div>
+
+ <canvas id="draw-canvas"/>
+</div>
+</body>
+
+<script type="text/javascript">
+var presenter = null;
+
+function setup3dhop() { 
+	presenter = new Presenter("draw-canvas");
+
+	presenter.setScene({
+		meshes: {
+			"tutankhamon" : { url: "models/multires/tut.nxz" },
+			"sphere" : { 
+				url: "models/singleres/sphere.ply",
+				transform : { 
+					matrix: SglMat4.scaling([ 8.0, 8.0, 5.0])
+				}
+			}
+		},
+		modelInstances : {
+			"model1" : { mesh : "tutankhamon" }
+		},
+		spots : {
+			"spot1" : {
+				mesh : "sphere",
+				transform : { 
+					matrix: SglMat4.mul(SglMat4.translation([-25.0, 150.0, 55.0]), SglMat4.rotationAngleAxis(sglDegToRad(-40.0), [0.0, 1.0, 0.0]))
+				},
+				color : [0.0, 0.25, 1.0, 0.4]
+			},
+			"spot2" : {
+				mesh : "sphere",
+				transform : { 
+					matrix: SglMat4.mul(SglMat4.translation([ 10.0,-15.0, 58.0]), SglMat4.rotationAngleAxis(sglDegToRad(-25.0), [1.0, 0.0, 0.0]))
+				},
+				color : [0.0, 0.25, 1.0, 0.5]
+			}
+		},
+		trackball: { 
+			type : TurnTableTrackball,
+			trackOptions: {
+				startPhi: (-110-(Math.random()*200)),
+				startDistance: 5.0,
+				minMaxTheta: [-20.0, 90.0],
+				minMaxDist: [1.0, 5.0]
+			}
+		},
+		space: {
+			centerMode: "explicit",
+			explicitCenter: [0.0, 140.0,-5.0],
+			cameraFOV     : 45.0
+		}
+	});
+
+	presenter.setSpotVisibility(HOP_ALL, false, true);
+
+	presenter._onPickedSpot = onPickedSpt;
+}
+
+function actionsToolbar(action) {
+	if(action=='home') { presenter.animateToTrackballPosition([-30.0, 25.0, 3.0]); presenter.rotateLight(0.0, 0.0); }
+	else if(action=='zoomin') presenter.zoomIn();
+	else if(action=='zoomout') presenter.zoomOut(); 
+	else if(action=='light' || action=='light_on') { presenter.enableLightTrackball(!presenter.isLightTrackballEnabled()); lightSwitch(); } 
+	else if(action=='hotspot'|| action=='hotspot_on') { presenter.toggleSpotVisibility(HOP_ALL, true); presenter.enableOnHover(!presenter.isOnHoverEnabled()); hotspotSwitch();} 
+	else if(action=='full'  || action=='full_on') fullscreenSwitch();
+	else if(action=='help'|| action=='help_on') helpSwitch();
+}
+
+function onPickedSpt(id) {
+  switch(id) {
+   case 'spot1' : infoSwitch('vertical'); setInfo(id); break; 
+   case 'spot2' : infoSwitch('horizontal'); setInfo(id); break; 
+   case 'spot3' : setInfo(id); break;
+  }
+}
+
+$(document).ready(function(){
+	init3dhop();
+
+	setup3dhop();
+
+	initPanels();
+
+	moveToolbar(null,(($('#3dhop').parent().height()-415)/2));
+
+	$("#toolbar")
+		.animate({
+			marginLeft: "-10"
+		}, 1000 );
+
+	$(window).on('resize', function () {
+		moveToolbar(null,(($('#3dhop').parent().height()-415)/2));
+		presenter.ui.postDrawEvent();
+	});
+});
+
+document.addEventListener("MSFullscreenChange", function () {
+	if(!document.msFullscreenElement) { moveToolbar(null,($('#toolbar').parent().height()-$('#toolbar').innerHeight())/2); }
+	else { moveToolbar(null,(screen.height-$('#toolbar').innerHeight())/2); }
+}, false);
+document.addEventListener("mozfullscreenchange", function () {
+	if(!document.mozFullScreen) { moveToolbar(null,($('#toolbar').parent().height()-$('#toolbar').innerHeight())/2); }
+	else { moveToolbar(null,(screen.height-$('#toolbar').innerHeight())/2); }
+}, false);
+document.addEventListener("webkitfullscreenchange", function () {
+	if(!document.webkitIsFullScreen) { moveToolbar(null,($('#toolbar').parent().height()-$('#toolbar').innerHeight())/2); }
+	else { moveToolbar(null,(screen.height-$('#toolbar').innerHeight())/2); }
+}, false);
+</script>
+
+<!-- Google Analytics Script -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46307450-2', 'cnr.it');
+  ga('send', 'pageview');
+</script>
+
+</html>

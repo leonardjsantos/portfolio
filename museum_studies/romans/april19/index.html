@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+
+    <script src="p5/p5.min.js"></script>
+    <script src="p5/addons/p5.dom.min.js"></script>
+    <script src="p5/addons/p5.sound.min.js"></script>
+		<script src="libraries/aframe.min.js"></script>
+		<script src='libraries/aframe-ar.js'></script>
+		<script src="libraries/aframep5_ar.js"></script>
+
+
+    <script src="menu/sketch.js"></script>
+    <script src="ar/sketch.js"></script>
+
+    <style>
+
+
+
+      /* shows a warning message when the screen is rotated into portrait mode -- necessary to prevent issues on mobile devices */
+      @media screen and (orientation:portrait) {
+        #portrait_warning {
+          position: fixed;
+          top: 0px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          background: white;
+          z-index: 1000;
+          display: block;
+        }
+      }
+
+      /* hides the rotational warning when the screen is in landscape mode */
+      @media screen and (orientation:landscape) {
+        #portrait_warning {
+          display: none;
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div id="menu_section">
+
+    </div>
+
+    <div id="ar_section">
+
+      <!-- modal box to tell the user to rotate their device into landscape mode - the AR toolkit only reliably renders in landscape mode -->
+  		<div id="portrait_warning">
+  			<h1>Rotate your device into landscape mode!</h1>
+  		</div>
+
+  		<!-- Define A-Frame VR Scene and set it up so that it will be manipulated through AR.js -->
+  		<a-scene id="ARScene" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono;'>
+
+  			<!-- set up graphics we want to use as assets, same as in A-Frame VR-->
+  			<a-assets>
+  				<a-asset id="statue_obj" src="models/statue/model.obj"></a-asset>
+  				<a-asset id="statue_mtl" src="models/statue/materials.mtl"></a-asset>
+  			</a-assets>
+
+  			<!-- set up all of the AR markers we will be working with along with links to their 'pattern' files -->
+  			<!-- note that we aren't putting any geometry inside of marker here - we will do that in the p5 sketch -->
+  			<a-marker id="hiro" preset="custom" url="markers/patt.hiro"></a-marker>
+
+  			<a-entity camera></a-entity>
+  		</a-scene>
+
+    </div>
+
+
+
+  </body>
+
+</html>

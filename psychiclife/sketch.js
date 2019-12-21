@@ -1,3 +1,5 @@
+// by Leonard Santos 
+
 var thePlayer;
 var ground;
 var groundHeight;

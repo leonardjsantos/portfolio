@@ -2,6 +2,31 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+.page_navBar{
+  margin: 5%;
+  text-align: center;
+  /* border: 1px solid red; */
+  /* overflow: hidden; */
+}
+.page_nav{
+  text-decoration: none;
+  color: black;
+  width: 50%;
+  overflow: hidden;
+  border: 1px solid black;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 2%;
+}
+
+.page_nav:hover{
+  background-color: #1c0424;
+  color: white;
+}
+
 .sidenav {
   height: 100%;
   width: 160px;

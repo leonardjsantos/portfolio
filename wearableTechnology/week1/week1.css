@@ -3,6 +3,16 @@
   margin: 2%;
 }
 
+.presentationPic{
+  width: 30%;
+  margin: 5%;
+  text-align: center;
+}
+
 .week1_video1{
   text-align: center;
+}
+
+.presentation_video{
+  width: 50%;
 }

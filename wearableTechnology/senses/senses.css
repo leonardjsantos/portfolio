@@ -6,3 +6,27 @@
   text-align: center;
   font-size: 25px;
 }
+
+.column {
+  float: left;
+  width: 32%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.column2 {
+  float: left;
+  width: 46%;
+  padding: 5px;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}

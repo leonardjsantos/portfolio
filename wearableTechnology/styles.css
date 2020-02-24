@@ -81,6 +81,29 @@ html{
 	font-size: 30px;
 }
 
+.homepage_container{
+  width: 40%;
+  overflow: hidden;
+  border: 5px solid black;
+  text-align: center;
+  background-color: lavender;
+}
+
+.homepage_container img{
+  width: 100%;
+  margin: 5px;
+  border: 2px solid white;
+}
+
+.homepage_container a{
+  text-decoration: none;
+
+}
+
+.homepage_container p{
+  color: black;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}

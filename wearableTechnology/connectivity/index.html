@@ -66,7 +66,65 @@
 
 		<h3 id="process" class="sectiontitle">Process</h3>
 
+		<p>to help me start off this project, I referenced two of the examples that Jingwen had provided in class: the
+			<a href="https://github.com/ZhuJingwen/intro-to-wearables-itp/blob/master/Week%207%20Examples/Week7_Example_BLE_Accelerometer/Week7_Example_BLE_Accelerometer.ino">
+				Arduino BLE accelerometer code
+			</a>
+			and the
+			<a href="https://editor.p5js.org/jingwen_zhu/sketches/9ErxItiEG">
+				p5 code.
+			</a>
+		</p>
+
+		<p>
+			Using these examples (and by downloading all of the relevant files and libraries onto my local computer), I began the process of putting my project together.
+		</p>
+
+		<p>
+			My first challenge was figuring out how to register when the accelerometer was and was not in motion.
+			I was able to figure this out by creating a variable to keep track of two data points; the absolute values of the position of accelerometer was in the moment
+			and the position of the accelerometer right beforehand. I made the program recognize if those two values were far enough apart
+			to consider the accelerometer to be "in motion", and it worked!
+		</p>
+
+		<p>
+			Unfortunately, I came across another issue; sometimes, the program would keep alternating between "motion" and "not in motion" since it kept tracking the position
+			of the accelerometer so quickly, so I created a few more variables so that it was a little bit more forgiving of smaller, longer movements.
+		</p>
+		<center>
+			<video width="25%" controls>
+			  <source src="assets/process_vid1.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+			</video>
+		</center>
+
+		<p>
+			Finally, now that I was able to get the computer to recognize the two states of "motion" and "not in motion" accurately, I took
+			an MP3 clip of the song "Candy Store" from Heathers: The Musical, and I was able to get it to play using the p5.js sound library.
+		</p>
+
+		<center>
+			<video width="25%" controls>
+			  <source src="assets/process_vid2.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+			</video>
+		</center>
+
+
+
 		<h3 id="presentation" class="sectiontitle">Presentation</h3>
+
+		<p>
+			Here is the final video of the product! If I had access to materials, I would want to sew this into a skirt like my
+			previous project, but unfortunately, this is the best I can do for now. I hope you enjoy!
+		</p>
+
+		<center>
+			<video width="25%" controls>
+			  <source src="assets/presentation_vid.mp4" type="video/mp4">
+					Your browser does not support the video tag.
+			</video>
+		</center>
 
 	</div>
 </body>

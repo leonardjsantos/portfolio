@@ -59,11 +59,9 @@ html, body {
 }
 
 @media only screen
-and (min-device-width : 375px)
-and (max-device-width : 812px)
-and (-webkit-device-pixel-ratio : 3) {
+and (max-device-width : 500px){
   .main h1{
-    font-size: 20vw;
+    font-size: 15vw;
     position: relative;
     padding-top: 1%;
   }
@@ -78,6 +76,30 @@ and (-webkit-device-pixel-ratio : 3) {
 
   .main p{
     font-size: 5vw;
+  }
+
+  .indexLinks img{
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-device-width : 501px) and (max-device-width : 700px){
+  .main h1{
+    font-size: 12vw;
+    position: relative;
+    padding-top: 1%;
+  }
+
+  .main h2{
+    font-size: 3vw;
+  }
+
+  .indexLinks img{
+    width: 50%;
+  }
+
+  .main p{
+    font-size: 4vw;
   }
 
   .indexLinks img{

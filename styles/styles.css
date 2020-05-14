@@ -57,3 +57,30 @@ html, body {
   transform: scale(1.2);
   opacity: 1;
 }
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+  .main h1{
+    font-size: 20vw;
+    position: relative;
+    padding-top: 1%;
+  }
+
+  .main h2{
+    font-size: 4vw;
+  }
+
+  .indexLinks img{
+    width: 70%;
+  }
+
+  .main p{
+    font-size: 5vw;
+  }
+
+  .indexLinks img{
+    opacity: 1;
+  }
+}

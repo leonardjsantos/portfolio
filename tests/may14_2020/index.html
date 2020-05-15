@@ -27,10 +27,10 @@
     </div>
     <div class="containerSide displayRight" id="firstDisplay_right">
       <div class="navBar">
-        <a href="about/index.html"><li>About</li></a>
-        <a href="portfolio/index.html"><li>Portfolio</li></a>
-        <a href="updates/index.html"><li>Updates</li></a>
-        <a href="connect/index.html"><li>Connect</li></a>
+        <span onclick="transitionToPage('about/index.html')"><li>About</li></span>
+        <span onclick="transitionToPage('portfolio/index.html')"><li>Portfolio</li></span>
+        <span onclick="transitionToPage('updates/index.html')"><li>Updates</li></span>
+        <span onclick="transitionToPage('connect/index.html')"><li>Connect</li></span>
       </div>
       <div class="firstContainerSubHeading">
         <h2>Hello world!</h2>
@@ -44,7 +44,9 @@
 
   <div class="indexContainer" id="aboutDisplay">
     <div class="indexInfo indexInfoRight">
-      <a href="about/index.html"><h1>ABOUT ME</h1></a>
+      <span onclick="transitionToPage('portfolio/index.html')">
+        <h1>ABOUT ME</h1>
+      </span>
       <p>
         I am a student at NYU pursuing my Master's degree in Media, Culture, and Communication (MCC) with a focus in LGBTQ+ Youth Mental Health and Digital Media + Technology.
       </p>
@@ -62,11 +64,11 @@
 
   <div class="indexContainer" id="portfolioDisplay">
     <div class="indexInfo indexInfoLeft portfolioIndex">
-      <a href="portfolio/index.html"><h1>PORTFOLIO</h1></a>
-      <a href="portfolio/index.html"><img class="portfolioIcon" src="assets/graphics/research.png"></a>
-      <a href="portfolio/index.html"><img class="portfolioIcon" src="assets/graphics/coding.png"></a>
-      <a href="portfolio/index.html"><img class="portfolioIcon" src="assets/graphics/communication.png"></a>
-      <a href="portfolio/index.html"><img class="portfolioIcon" src="assets/graphics/music.png"></a>
+      <span onclick="transitionToPage('portfolio/index.html')"><h1>PORTFOLIO</h1></span>
+      <span onclick="transitionToPage('portfolio/index.html')"><img class="portfolioIcon" src="assets/graphics/research.png"></a></span>
+      <span onclick="transitionToPage('portfolio/index.html')"><img class="portfolioIcon" src="assets/graphics/coding.png"></a></span>
+      <span onclick="transitionToPage('portfolio/index.html')"><img class="portfolioIcon" src="assets/graphics/communication.png"></a></span>
+      <span onclick="transitionToPage('portfolio/index.html')"><img class="portfolioIcon" src="assets/graphics/music.png"></a></span>
     </div>
     <div class="indexArrow indexArrowUp">
       <a href="#aboutDisplay"><img src="assets/graphics/upArrowBlack.png" alt="downArrow"></a>
@@ -78,7 +80,9 @@
 
   <div class="indexContainer" id="updatesDisplay">
     <div class="indexInfo indexInfoRight">
-      <a href="updates/index.html"><h1>UPDATES</h1></a>
+      <span onclick="transitionToPage('updates/index.html')">
+        <h1>UPDATES</h1>
+      </span>
       <p>What's happening now</p>
     </div>
     <div class="indexArrow indexArrowUp">
@@ -91,7 +95,9 @@
 
   <div class="indexContainer" id="connectDisplay">
     <div class="indexInfo indexInfoLeft connectIndex">
-      <a href="connect/index.html"><h1>CONNECT</h1></a>
+      <span onclick="transitionToPage('connect/index.html')">
+        <h1>CONNECT</h1>
+      </span>
       <div class="connectIconContainer">
         <a href="mailto:leonardsantos.contact@gmail.com"><img class="connectIcon" src="assets/graphics/email.png"></a>
         <a href="https://www.linkedin.com/in/leonardsantos/" target="_blank"><img class="connectIcon" src="assets/graphics/linkedin.png"></a>
@@ -99,11 +105,10 @@
       </div>
     </div>
     <div class="indexArrow indexArrowUp">
-      <a href="#updatesDisplay"><img src="assets/graphics/upArrowWhite.png" alt="downArrow"></a>
+      <a href="#updatesDisplay"><img src="assets/graphics/upArrowBlack.png" alt="downArrow"></a>
     </div>
   </div>
 
-
-
+  <script src="scripts/index.js"></script>
 </body>
 </html>

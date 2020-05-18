@@ -47,8 +47,11 @@ html, body {
 }
 
 .indexLinks img{
+  padding-top: 5%;
+  padding-bottom: 5%;
   padding-left: 5%;
-  width: 27%;
+  padding-right: 5%;
+  width: 20%;
   transition: transform .5s;
   opacity: 0.9;
 }
@@ -67,19 +70,33 @@ and (max-device-width : 500px){
   }
 
   .main h2{
-    font-size: 4vw;
+    padding: 0;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 5vw;
+    line-height: 200%;
+    /* padding-bottom: 2%; */
+  }
+
+  .indexLinks{
+    margin-bottom: 0;
   }
 
   .indexLinks img{
-    width: 50%;
+    width: 42%;
+    opacity: 1;
   }
 
   .main p{
     font-size: 5vw;
+    padding-bottom: 5%;
   }
 
-  .indexLinks img{
-    opacity: 1;
+  .footer{
+    overflow: hidden;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 5%;
   }
 }
 

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Freud Game</title>
+		<script src="../p5/p5.min.js"></script>
+    <script src="../p5/addons/p5.dom.min.js"></script>
+    <script src="../p5/addons/p5.sound.min.js"></script>
+    <script src="sketch.js"></script>
+		<link href="styles.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR|Raleway" rel="stylesheet">
+
+	</head>
+	<body>
+		<header>
+			<h1>Freud Game</h1>
+			<h2>By Leonard Santos</h2>
+		</header>
+		<h3><b>Summary</b></h3>
+		<p>
+			This project is a video game based upon Freud's concept of the pleasure principle, or the human desire to experience pleasure and avoid unpleasure. In this game, this is symbolized by the "Pleasure Bar" at the top of the screen, which will slowly decrease with time. In order to combat this, the player must collect items (that symbolize larger concepts) that fall from the top of the screen to replenish the Pleasure Bar. However, there is a catch; because of Freud's idea of diminishing returns when it comes to pleasure, the items that fall from the sky will have less of an effect, no effect, or a negative effect if they get the same icon more than once in a row.
+		</p>
+
+		<h3><b>Process</b></h3>
+		<p>
+			The first step of this process was to design the character, the background, and the icons that would fall from the sky. I first needed to find my design inspirations for all of them. Since this is an 8-bit video game, I thought it would be interesting to use one of the older designs of Mario as the inspiration behind the character design. Using Photoshop, I changed him to look a little bit more like Freud based on this photograph, adding a little bit more color so that he would stand out from the background.
+		</p>
+		<img src="playerLeft/frame00.png" alt="FreudCharacter">
+		<img src="playerRight/frame00.png" alt="FreudCharacter">
+
+		<p>
+			Afterward I created the initial character model, I created a few more models of the Freud character running and jumping so that I could simulate movement on the screen:
+		</p>
+
+		<img src="playerLeft/frame01.png" alt="FreudCharacter">
+		<img src="playerLeft/frame02.png" alt="FreudCharacter">
+		<img src="playerJump/jumpLeft.png" alt="FreudCharacter">
+		<img src="playerRight/frame01.png" alt="FreudCharacter">
+		<img src="playerRight/frame02.png" alt="FreudCharacter">
+		<img src="playerJump/jumpRight.png" alt="FreudCharacter">
+
+		<p>
+			Next, I had to design the icons that would represent different distractions and methods of experiencing pleasure and unpleasure. This includes, aggression, anger, alcohol, drugs, love, sex, and the loss of love.
+		</p>
+		<img src="assets/img00.png" alt="item">
+		<img src="assets/img01.png" alt="item">
+		<img src="assets/img02.png" alt="item">
+		<img src="assets/img03.png" alt="item">
+		<img src="assets/img04.png" alt="item">
+		<img src="assets/img05.png" alt="item">
+		<img src="assets/img06.png" alt="item">
+
+		<p>
+			Finally, I had to design the background of the game that would end up being the title screen, game over screen, and player screen. I created a simple room with a wooden floor, couch, and chair to represent Freud’s methodology of sitting and talking with his patients in his sessions.
+		</p>
+
+		<img src="assets/titlepage.png" alt="titlepage">
+
+
+
+		<p>
+			Now that everything was designed, it was time to move onto the most difficult part of it all: coding the game.
+		</p>
+
+		<h3><b>Coding and Mechanics</b></h3>
+
+		<p>
+			I built this video game using p5.js, an open-source JavaScript library that I've used to build a few other projects in my undergraduate career. To plan for this video game, I made a list of mechanics that I needed to implement within the code:
+		</p>
+
+		<h4>The Character</h4>
+		<ul>
+			<li>The character should be able to run left and right, but should not be able to run off the side of the screen</li>
+			<li>The character should be able to jump, but there should be a limit to how high the jump goes, realistic physics around falling, and a ground so that the character doesn't drop off the screen</li>
+			<li>The character should be animated and have different animations when standing, running, and walking. All of these animations should also flip depending on what direction the player wants to go.</li>
+			<li>There should be a sound effect when the character jumps</li>
+		</ul>
+
+		<h4>The Pleasure Bar</h4>
+		<ul>
+			<li>There should be a Pleasure Bar that tracks the player's progress</li>
+			<li>The Pleasure Bar slowly goes down through time</li>
+			<li>The game will be over if the Pleasure Bar is equal to 0</li>
+		</ul>
+
+		<h4>The Items</h4>
+		<ul>
+			<li>Items should spawn in the sky with randomly generated probability and location</li>
+			<li>The character should be able to interact with the items when they touch</li>
+			<li>The items have different effects on the Pleasure Bar from one another</li>
+			<li>The items have different effects on the Pleasure Bar if you catch more than one in a row</li>
+		</ul>
+
+		<h4>Screens</h4>
+		<ul>
+			<li>There should be a title screen</li>
+			<li>There should be a game over screen</li>
+			<li>There is a player screen</li>
+			<li>Easily accessible paths between the screens that allow players to constantly replay the game without refreshing the page</li>
+		</ul>
+
+		<p>
+			I downloaded the designs I had created before into the folder along with some audio tracks, and ended up with this:
+		</p>
+
+
+		<h3><b>Gameplay Input</b></h3>
+
+		<p>To play the game, you only need to press "D" to move right, "A" to move left, and "W" to jump.</p>
+		<p>Below, you can find a list of the different items you can collect in the game.</p>
+
+		<table>
+		  <tr>
+		    <th>Icon</th>
+		    <th>First Catch</th>
+		    <th>Repeated Catch</th>
+		  </tr>
+		  <tr>
+		    <td><img src="assets/img00.png"><p>Aggression</p></td>
+		    <td>+75</td>
+		    <td>-50</td>
+		  </tr>
+			<tr>
+				<td><img src="assets/img01.png"><p>Art</p></td>
+		    <td>+50</td>
+		    <td>+25</td>
+		  </tr>
+		  <tr>
+				<td><img src="assets/img02.png"><p>Drugs</p></td>
+		    <td>+50</td>
+		    <td>+1</td>
+		  </tr>
+		  <tr>
+				<td><img src="assets/img03.png"><p>Sex</p></td>
+		    <td>+100</td>
+		    <td>+15</td>
+		  </tr>
+		  <tr>
+				<td><img src="assets/img04.png"><p>Love</p></td>
+		    <td>+200</td>
+		    <td>+30</td>
+		  </tr>
+		  <tr>
+				<td><img src="assets/img05.png"><p>Alcohol</p></td>
+		    <td>+50</td>
+		    <td>+1</td>
+		  </tr>
+		  <tr>
+				<td><img src="assets/img06.png"><p>Loss of Love</p></td>
+		    <td>-200</td>
+		    <td>-200</td>
+		  </tr>
+		</table>
+
+		<h3><b>Enjoy!</b></h3>
+		<p>Hope you enjoy playing the game!<p>
+
+		<br>
+	</body>
+</html>

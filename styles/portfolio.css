@@ -17,15 +17,62 @@ html, body {
   text-align: center;
 }
 
+/* .openingContainer{
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+} */
+
+.pageName{
+  border: 5px solid white;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
+}
+
+.pageNav{
+  width: 100%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  overflow: hidden;
+}
+
+.pageNav ul{
+  width: 50%;
+  padding-left: 25%;
+  padding-right: 25%;
+  overflow: hidden;
+}
+
+.pageNav li{
+  list-style-type: none;
+  font-size: 4vw;
+  width: 50%;
+  float: left;
+  transition: transform 0.2s;
+}
+
+.pageNav li:hover{
+  transform: scale(1.2);
+}
+
+.pageNav a{
+  text-decoration: none;
+}
+
 .main h1{
   position: relative;
   font-weight: 800;
-  font-size: 8vw;
+  font-size: 9vw;
   padding-top: 0%;
 }
 
 .main h2{
   font-size: 7vw;
+  overflow: none;
+  display:
 }
 
 .main a{
@@ -36,6 +83,9 @@ html, body {
   width: 70%;
   padding-left: 15%;
   padding-right: 15%;
+  padding-bottom: 2%;
+  margin-top: 3%;
+  color: white;
 }
 
 .aboutPortfolio p{
@@ -44,16 +94,24 @@ html, body {
   margin-bottom: 2%;
 }
 
+.aboutPortfolio a{
+  color: white;
+  transition: transform .2s;
+}
+
+.aboutPortfolio a:hover{
+  transform: scale(1.1);
+}
+
 .resumeDownload{
   /* padding-top: 2%;
   padding-bottom: 2%; */
-  margin-top: 2%;
   margin-bottom: 1%;
-  border: 5px solid white;
-  font-size: 2vw;
-  width: 20%;
-  margin-left: 40%;
-  margin-right: 40%;
+  border: 2px solid white;
+  font-size: 3vw;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
   transition: transform 0.2s;
 
 }
@@ -70,9 +128,9 @@ html, body {
   padding-top: 2%;
   padding-bottom: 2%;
   overflow: hidden;
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .portfolioNav ul{
@@ -82,13 +140,14 @@ html, body {
 .portfolioNav li{
   float: left;
   width: 33.33%;
-  font-size: 2vw;
+  font-size: 3vw;
   list-style-type: none;
-  transition: transform 0.2s;
+  transition: transform 0.2s, text-decoration 0.2s;
 }
 
 .portfolioNav li:hover{
   transform: scale(1.2);
+  text-decoration: underline;
 }
 
 .portfolioSection h2{
@@ -139,6 +198,7 @@ html, body {
 
 .skillsList{
   width: 100%;
+  overflow: hidden;
 }
 
 .skillsList ul{
@@ -147,27 +207,40 @@ html, body {
   width: 30%;
   padding-left: 10%;
   padding-right: 10%;
+  /* padding-bottom: 15%; */
+  overflow: hidden;
+
+
 }
 
 .skillsList li{
   font-size: 2vw;
 }
 
-footer{
+.footer{
   width: 100%;
   transition: transform 0.2s;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 .footerLinks{
-  margin-left: 80%;
-  width: 20%;
+  margin-left: 93%;
+  width: 6%;
   overflow: hidden;
   padding-top: 2%;
   padding-bottom: 1%;
 }
 
 .footerLinks img{
-  width: 20%;
-  padding-left: 5%;
-  padding-right: 5%;
+  width: 88%;
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-bottom: 5%;
+  transition: transform 0.2s;
+}
+
+.footerLinks img:hover{
+  transform: scale(1.1);
 }

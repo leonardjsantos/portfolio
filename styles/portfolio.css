@@ -107,11 +107,18 @@ html, body {
   /* padding-top: 2%;
   padding-bottom: 2%; */
   margin-bottom: 1%;
-  border: 2px solid white;
-  font-size: 3vw;
+  /* border: 2px solid white; */
   width: 30%;
   margin-left: 35%;
   margin-right: 35%;
+  /* transition: transform 0.2s; */
+}
+
+.resumeDownload h3{
+  overflow: hidden;
+  font-size: 3vw;
+  border: 2px solid white;
+
   transition: transform 0.2s;
 
 }
@@ -120,7 +127,7 @@ html, body {
   text-decoration: none;
 }
 
-.resumeDownload:hover{
+.resumeDownload h3:hover{
   transform: scale(1.2);
 }
 
